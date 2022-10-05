@@ -1,0 +1,32 @@
+.button
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    border-radius: 50%;
+}
+
+.header
+{
+    text-align: right;
+}
+
+.footer
+{
+    text-align: center;
+}
+
+.responsive
+{
+  width: 100%;
+  height: auto;
+}
+
+/*.div
+{
+    text-align: left;
+    text-decoration: wavy;
+    font-size: x-large;
+    font-display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: goldenrod;
+}*/
