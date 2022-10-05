@@ -1,6 +1,12 @@
 package com.example.GraduationProject.Business.Entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -9,17 +15,28 @@ public class FoodItem
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
     private int id;
+    @Size(min=3, max=30)
     @Column(name = "Name")
     private String name;
+
+    @NotNull
     @Column(name = "Category")
     private String category;
+    @Size(min=3, max=100)
     @Column(name = "AllergyInformation")
     private String allergyInformation;
+    @NotNull
+    @FutureOrPresent
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "ExpiryDate")
     private Date expiryDate;
+    @Size(min=1, max=100)
     @Column(name = "Quantity")
-    private String Quantity;
+    private String quantity;
+
+    @NotNull
     @Column(name = "Status")
     private String status;
     @Column(name = "Image")
@@ -35,7 +52,7 @@ public class FoodItem
         this.category = category;
         this.allergyInformation = allergyInformation;
         this.expiryDate = expiryDate;
-        Quantity = quantity;
+        this.quantity = quantity;
         this.status = status;
         this.image = image;
     }
@@ -87,12 +104,12 @@ public class FoodItem
 
     public String getQuantity()
     {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(String quantity)
     {
-        Quantity = quantity;
+        quantity = quantity;
     }
 
     public String getStatus()

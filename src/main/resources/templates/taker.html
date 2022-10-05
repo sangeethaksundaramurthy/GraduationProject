@@ -8,27 +8,35 @@
 <form action="#" th:action="@{/taker}" method="POST" th:object="${taker}">
 
     <label>Name: </label>
-    <input type="text" th:field="*{name}"/><br/>
+    <input type="text" th:field="*{name}"/>
+    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
 
     <label>License Id: </label>
-    <input type="text" th:field="*{LicenseId}"/><br/>
+    <input type="text" th:field="*{licenseId}"/>
+    <label th:if="${#fields.hasErrors('licenseId')}">Incorrect value in the input!</label><br/>
 
     <label>Address: </label>
-    <input type="text" th:field="*{address}"/><br/>
+    <input type="text" th:field="*{address}"/>
+    <label th:if="${#fields.hasErrors('address')}">Incorrect value in the input!</label><br/>
 
     <label>Postal Code: </label>
-    <input type="text" th:field="*{postalCode}"/><br/>
+    <input type="text" th:field="*{postalCode}"/>
+    <label th:if="${#fields.hasErrors('postalCode')}">Incorrect value in the input!</label><br/>
 
     <label>Phone: </label>
-    <input type="text" th:field="*{phone}"/><br/>
+    <input type="text" th:field="*{phone}"/>
+    <label th:if="${#fields.hasErrors('phone')}">Incorrect value in the input!</label><br/>
 
     <label>Allergy Information: </label>
-    <input type="text" th:field="*{allergyInformation}"/><br/>
+    <input type="text" th:field="*{allergyInformation}"/>
+    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
 
     <label>Email ID: </label>
-    <input type="text" th:field="*{emailId}"/><br/>
+    <input type="text" th:field="*{emailId}"/>
+    <label th:if="${#fields.hasErrors('emailId')}">Incorrect value in the input!</label><br/>
 
     <input type="submit"/>
+
 </form>
 </body>
 </html>

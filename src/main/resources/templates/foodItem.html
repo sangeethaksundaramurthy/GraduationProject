@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Item</title>
+</head>
+<body>
+<form action="#" th:action="@{/foodItem}" method="POST" th:object="${foodItem}">
+
+    <label>Name: </label>
+    <input type="text" th:field="*{name}"/>
+    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
+
+    <label>Category: </label>
+    <select th:field="*{category}" required>
+        <option th:value = "'Choose one...'"> Choose one... </option>
+        <option th:value = "Vegan"> Vegan </option>
+        <option th:value = "Vegetarian"> Vegetarian </option>
+        <option th:value = "Eggetarian"> Eggetarian </option>
+        <option th:value = "'Non Vegetarian'"> Non Vegetarian </option>
+        <option th:value = "Halal"> Halal </option>
+        <option th:value = "'Dairy free'"> Dairy free </option>
+    </select>
+
+    <label th:if="${#fields.hasErrors('category')}">Incorrect value in the input!</label><br/>
+
+    <label>Allergy Information: </label>
+    <textarea th:field="*{allergyInformation}"> </textarea>
+    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
+
+    <label>Expiry Date: </label>
+    <input type="date" th:field="*{expiryDate}"/>
+    <label th:if="${#fields.hasErrors('expiryDate')}">Incorrect value in the input!</label><br/>
+
+    <label>Quantity: </label>
+    <textarea th:field="*{quantity}"> </textarea>
+    <label th:if="${#fields.hasErrors('quantity')}">Incorrect value in the input!</label><br/>
+
+    <label>Status: </label>
+    <select th:field="*{status}"  required>
+        <option th:value = "'Choose one...'"> Choose one... </option>
+        <option th:value = "Available"> Available </option>
+        <option th:value = "Accepted"> Accepted </option>
+        <option th:value = "'Picked up'"> Picked up </option>
+        <option th:value = "Received"> Received </option>
+    </select>
+    <label th:if="${#fields.hasErrors('status')}">Incorrect value in the input!</label><br/>
+
+    <label>Image: </label>
+    <input type="file" th:field="*{image}"/>
+    <label th:if="${#fields.hasErrors('image')}">Incorrect value in the input!</label><br/>
+
+    <input type="submit"/>
+
+</form>
+</body>
+</html>

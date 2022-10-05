@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Donor</title>
+</head>
+<body>
+<form action="#" th:action="@{/donor}" method="POST" th:object="${donor}">
+
+    <label>Name: </label>
+    <input type="text" th:field="*{name}"/>
+    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
+
+    <label>Phone: </label>
+    <input type="text" th:field="*{phone}"/>
+    <label th:if="${#fields.hasErrors('phone')}">Incorrect value in the input!</label><br/>
+
+    <label>Date of birth: </label>
+    <input type="date" th:field="*{dateOfBirth}"/>
+    <label th:if="${#fields.hasErrors('dateOfBirth')}">Incorrect value in the input!</label><br/>
+
+    <label>Email ID: </label>
+    <input type="text" th:field="*{emailId}"/>
+    <label th:if="${#fields.hasErrors('emailId')}">Incorrect value in the input!</label><br/>
+
+    <input type="submit"/>
+
+</form>
+</body>
+</html>
