@@ -1,47 +1,202 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Taker</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Be aHand</title>
+
+    <!-- Favicon, CSS & JS -->
+
+    <link rel="stylesheet" href="style/taker.css" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
+    <script src="js/client.js" defer></script>
+    <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
 </head>
+
 <body>
 
-<form th:action="@{/taker}" method="POST" th:object="${taker}">
 
-    <label>Name: </label>
-    <input type="text" th:field="*{name}"/>
-    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
+<!-- Navbar -->
+<div id="navbar" class="navbar">
+    <ul>
+        <li>
+            <a href="contact.html" id="Contact">Contact</a>
+        </li>
+        <li>
+            <a href="beAHand.html" id="BeaHand-button">Be aHand</a>
+        </li>
+        <li>
+            <a href="/" id="TakeaHand-button">Home</a>
+        </li>
+        <li>
+            <a href="#Volunteer" id="volunteer-button">Be aVolunteer</a>
+        </li>
+        <img src="images/BeaHand.png" class="navbar-logo" />
+        <div class="name">Be aHand</div>
+    </ul>
+</div>
 
-    <label>License Id: </label>
-    <input type="text" th:field="*{licenseId}"/>
-    <label th:if="${#fields.hasErrors('licenseId')}">Incorrect value in the input!</label><br/>
+<div class="container">
+    <div class="forms">
+        <div class="form login">
+            <div class="login-signup">
+            <span class="text"
+            >Not a member?
+              <a href="#" class="text signup-link">Signup Now</a>
+            </span>
+            </div>
+            <span class="title">Login</span>
 
-    <label>Address: </label>
-    <input type="text" th:field="*{address}"/>
-    <label th:if="${#fields.hasErrors('address')}">Incorrect value in the input!</label><br/>
+            <form action="#">
+                <div class="input-field">
+                    <input type="text" placeholder="Enter your email" required />
+                    <i class="uil uil-envelope icon"></i>
+                </div>
+                <div class="input-field">
+                    <input
+                            type="password"
+                            class="password"
+                            placeholder="Enter your password"
+                            required
+                    />
+                    <i class="uil uil-lock icon"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
 
-    <label>Postal Code: </label>
-    <input type="text" th:field="*{postalCode}"/>
-    <label th:if="${#fields.hasErrors('postalCode')}">Incorrect value in the input!</label><br/>
+                <div class="checkbox-text">
+                    <div class="checkbox-content">
+                        <input type="checkbox" id="logCheck" />
+                        <label for="logCheck" class="text">Remember me</label>
+                    </div>
 
-    <label>Phone: </label>
-    <input type="text" th:field="*{phone}"/>
-    <label th:if="${#fields.hasErrors('phone')}">Incorrect value in the input!</label><br/>
+                    <a href="#" class="text">Forgot password?</a>
+                </div>
 
-    <label>Allergy Information: </label>
-    <input type="text" th:field="*{allergyInformation}"/>
-    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
+                <div class="input-field button">
+                    <input type="button" value="Login" />
+                </div>
+            </form>
+        </div>
 
-    <label>Email ID: </label>
-    <input type="email" th:field="*{emailId}"/>
-    <label th:if="${#fields.hasErrors('emailId')}">Incorrect value in the input!</label><br/>
 
-    <label>Password: </label>
-    <input type="password" th:field="*{password}"/>
-    <label th:if="${#fields.hasErrors('password')}">Incorrect value in the input!</label><br/>
+        <!-- Registration Form -->
+        <div class="form signup">
+            <div class="login-signup">
+            <span class="text"
+            >Already a member?
+              <a href="#" class="text login-link">Login Now</a>
+            </span>
+            </div>
+            <span class="title">Registration</span>
 
-    <input type="submit"/>
+            <form th:action="@{/taker}" method="POST" th:object="${taker}">
+                <div class="input-field">
+                    <input type="text" placeholder="Enter your name" required th:field="*{name}" />
+                    <i class="uil uil-user"></i>
+                    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
+                </div>
 
-</form>
+                <div class="input-field">
+                    <input
+                            type="text"
+                            class="password"
+                            placeholder="Address"
+                            required
+                            th:field="*{address}"
+                    />
+                    <i class="uil uil-estate"></i>
+                    <label th:if="${#fields.hasErrors('address')}">Incorrect value in the input!</label><br/>
+                </div>
+                <div class="input-field">
+                    <input
+                            type="text"
+                            class="password"
+                            placeholder="Postal Code"
+                            required
+                            th:field="*{postalCode}"
+                    />
+                    <i class="uil uil-location-point"></i>
+                    <label th:if="${#fields.hasErrors('postalCode')}">Incorrect value in the input!</label><br/>
+                </div>
+                <div class="input-field">
+                    <input
+                            type="password"
+                            class="password"
+                            placeholder="Liscense ID"
+                            required
+                            th:field="*{licenseId}"
+                    />
+                    <i class="uil uil-keyhole-circle"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                    <label th:if="${#fields.hasErrors('licenseId')}">Incorrect value in the input!</label><br/>
+                </div>
+                <div class="input-field">
+                    <input
+                            type="allergy"
+                            class="password"
+                            placeholder="Allergy Information"
+                            required
+                            th:field="*{allergyInformation}"
+                    />
+                    <i class="uil uil-letter-english-a"></i>
+                    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" placeholder="Enter your email" required th:field="*{emailId}"/>
+                    <i class="uil uil-envelope icon"></i>
+                    <label th:if="${#fields.hasErrors('emailId')}">Incorrect value in the input!</label><br/>
+                </div>
+
+                <div class="input-field">
+                    <input
+                            type="password"
+                            class="password"
+                            placeholder="Password"
+                            required
+                            th:field="*{password}"
+                    />
+                    <i class="uil uil-lock icon"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                    <label th:if="${#fields.hasErrors('password')}">Incorrect value in the input!</label><br/>
+                </div>
+
+                <div class="checkbox-text">
+                    <div class="checkbox-content">
+                        <input type="checkbox" id="termCon" />
+                        <label for="termCon" class="text"
+                        >I accepted all terms and conditions</label
+                        >
+                    </div>
+                </div>
+
+                <div class="input-field button">
+                    <input type="submit" value="Signup" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="javascript/taker.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

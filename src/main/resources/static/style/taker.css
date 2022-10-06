@@ -1,0 +1,257 @@
+.name {
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 22px 30px;
+  text-decoration: none;
+  font-size: xx-large;
+  font-family: sans-serif;
+  color: #ffb606;
+  font-weight: bolder;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.navbar li {
+  float: right;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 30px 30px;
+  text-decoration: none;
+  font-size: larger;
+  font-family: ubuntu;
+}
+
+.food {
+  text-align: center;
+  font-size: 35px;
+  font-family: ubuntu;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.navbar li a:hover {
+  background-color: #111;
+}
+
+.navbar-logo {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff0cd;
+  margin: 10px;
+  overflow-y: scroll;
+}
+
+.container {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  /* From https://css.glass */
+
+  background-color: #fff0cd;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 20px;
+  margin-top: 100px;
+}
+
+.container .forms {
+  display: flex;
+  align-items: center;
+  height: 360px;
+  width: 200%;
+  transition: height 0.2s ease;
+}
+
+.container .form {
+  width: 50%;
+  padding: 30px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: margin-left 0.18s ease;
+}
+
+.container.active .login {
+  margin-left: -50%;
+  opacity: 0;
+  transition: margin-left 0.18s ease, opacity 0.05s ease;
+}
+
+.container .signup {
+  opacity: 0;
+  transition: opacity 0.09s ease;
+}
+.container.active .signup {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.container.active .forms {
+  height: 650px;
+}
+.container .form .title {
+  position: relative;
+  font-size: 27px;
+  font-weight: 600;
+  font-family: ubuntu;
+}
+
+.form .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: #ffb606;
+  border-radius: 25px;
+}
+
+.form .input-field {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  /* border-bottom: 2px solid #ccc; */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+  border-bottom-color: #ffb606;
+}
+
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+}
+
+.input-field input:is(:focus, :valid) ~ i {
+  color: #ffb606;
+}
+
+.input-field i.icon {
+  left: 0;
+}
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.form .checkbox-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-content input {
+  margin: 0 8px -2px 4px;
+  accent-color: #ffb606;
+}
+
+.form .text {
+  color: #333;
+  font-size: 14px;
+}
+
+.form a.text {
+  color: #ffb606;
+  text-decoration: none;
+  font-weight: bold;
+}
+.form a:hover {
+  text-decoration: underline;
+}
+
+.form .button {
+  margin-top: 20px;
+}
+
+.form .button input {
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #ffb606;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #ffb606;
+}
+
+.form .login-signup {
+  margin-bottom: 15px;
+  text-align: center;
+}

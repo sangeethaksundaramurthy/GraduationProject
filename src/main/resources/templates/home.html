@@ -1,14 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Be aHand</title>
-    <link rel="stylesheet " href="style.css">
+
+    <!-- Favicon, CSS & JS -->
+
+    <link rel="stylesheet" href="style/home.css" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
+    <script src="js/client.js" defer></script>
+
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
 </head>
+
 <body>
+<!-- Navbar -->
+<div id="navbar" class="navbar">
+    <ul>
+        <li>
+            <a href="contact.html" id="Contact-button">Contact</a>
+        </li>
+        <li>
+            <a href="beAHand.html" id="BeaHand-button">Be aHand</a>
+        </li>
+        <li>
+            <a href="/taker" id="TakeaHand-button">Take aHand</a>
+        </li>
+        <li>
+            <a href="#Volunteer" id="volunteer-button">Be aVolunteer</a>
+        </li>
+        <img src="images/BeaHand.png" class="navbar-logo" />
+        <div class="name">Be aHand</div>
+    </ul>
+</div>
 
-<h1>This is home page</h1>
+<div>
+    <img src="/images/food.png" />
+</div>
 
+<aside>
+    <h2>About <span class="logo">Be aHand</span></h2>
+    <div class="row">
+        <div class="column">
+            <p>
+                Be aHand is the Stockholm City's social food service that do good
+                for both people and the environment. With us, you contribute to
+                reduce food waste and the needy get the food for free.
+            </p>
+            <p>
+                The food supply consists exclusively of food that is donated from
+                the restaurants or private parties. The mission of Be aHand is to
+                serve food not only to who register to the website but also to other
+                vulnerable groups like people experiencing homelessness.
+            </p>
+        </div>
+        <div class="column">
+            <img
+                    class="volunteers"
+                    src="images/volunteer.jpg"
+                    alt="Man working on a computer"
+                    width="70"
+                    height="70"
+            />
+        </div>
+    </div>
 
+    <h2>Contact <span class="logo">Be aHand</span></h2>
+    <section class="bg-light" id="contact">
+        <p>
+            <i class="fa fa-envelope"></i></a>
+            <span class="number"><a href="email.html" id="Email">beahand@gmail.com</a></span>
+        </p>
+        <p>
+            <i class="fa fa-phone" font-size="30px"></i>
+            <span class="number"><a href="tel"> +46 764526902</a></span>
+        </p>
+    </section>
+</aside>
+
+<!-- Footer -->
+<footer class="center bg-dark">
+    <p><span class="logo">Be aHand</span> &copy; 2020</p>
+</footer>
 </body>
 </html>
