@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Taker")
@@ -12,37 +13,49 @@ public class Taker
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
-
     private int id;
+
     @Size(min=3, max=30)
     @Column(name = "Name")
     private String name;
+
     @Size(min=5, max=15)
     @Column(name = "LicenseId")
     private String licenseId;
+
     @Size(min=10, max=50)
     @Column(name = "Address")
     private String address;
 
+    @NotNull
     @Range(min= 10000, max = 999999)
     @Column(name = "PostalCode")
-    private int postalCode;
+    private Integer postalCode;
+
     @Size(min=10, max=10)
     @Column(name = "Phone")
     private String phone;
+
     @Size(min =0, max=50)
     @Column(name = "AllergyInformation")
     private String allergyInformation;
+
     @Email
     @NotBlank
     @Column(name = "EmailId")
     private String emailId;
 
+    @NotBlank
+    @Column(name= "Password")
+    private String password;
+
+    @OneToMany(mappedBy = "taker", cascade = CascadeType.ALL)
+    private List<FoodItem> foodItems;
     public Taker()
     {
     }
 
-    public Taker(String name, String licenseId, String address, int postalCode, String phone, String allergyInformation, String emailId)
+    public Taker(String name, String licenseId, String address, Integer postalCode, String phone, String allergyInformation, String emailId, String password)
     {
         this.name = name;
         this.licenseId = licenseId;
@@ -51,6 +64,7 @@ public class Taker
         this.phone = phone;
         this.allergyInformation = allergyInformation;
         this.emailId = emailId;
+        this.password = password;
     }
 
     public int getId()
@@ -88,12 +102,12 @@ public class Taker
         this.address = address;
     }
 
-    public int getPostalCode()
+    public Integer getPostalCode()
     {
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode)
+    public void setPostalCode(Integer postalCode)
     {
         this.postalCode = postalCode;
     }
@@ -126,6 +140,26 @@ public class Taker
     public void setEmailId(String emailId)
     {
         this.emailId = emailId;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public List<FoodItem> getFoodItems()
+    {
+        return foodItems;
+    }
+
+    public void setFoodItems(List<FoodItem> foodItems)
+    {
+        this.foodItems = foodItems;
     }
 
     @Override public String toString()

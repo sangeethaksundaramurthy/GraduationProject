@@ -3,7 +3,6 @@ package com.example.GraduationProject.Business.Entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,14 +23,17 @@ public class FoodItem
     @NotNull
     @Column(name = "Category")
     private String category;
+
     @Size(min=3, max=100)
     @Column(name = "AllergyInformation")
     private String allergyInformation;
+
     @NotNull
     @FutureOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "ExpiryDate")
     private Date expiryDate;
+
     @Size(min=1, max=100)
     @Column(name = "Quantity")
     private String quantity;
@@ -39,14 +41,24 @@ public class FoodItem
     @NotNull
     @Column(name = "Status")
     private String status;
+
     @Column(name = "Image")
     private String image;
+
+    @ManyToOne
+    private Donor donor;
+
+    @ManyToOne
+    private Taker taker;
+
+    @ManyToOne
+    private Volunteers volunteers;
 
     public FoodItem()
     {
     }
 
-    public FoodItem(String name, String category, String allergyInformation, Date expiryDate, String quantity, String status, String image)
+    public FoodItem(String name, String category, String allergyInformation, Date expiryDate, String quantity, String status, String image, Donor donor)
     {
         this.name = name;
         this.category = category;
@@ -55,6 +67,7 @@ public class FoodItem
         this.quantity = quantity;
         this.status = status;
         this.image = image;
+        this.donor = donor;
     }
 
     public int getId()
@@ -109,7 +122,7 @@ public class FoodItem
 
     public void setQuantity(String quantity)
     {
-        quantity = quantity;
+        this.quantity = quantity;
     }
 
     public String getStatus()
@@ -130,5 +143,35 @@ public class FoodItem
     public void setImage(String image)
     {
         this.image = image;
+    }
+
+    public Donor getDonor()
+    {
+        return donor;
+    }
+
+    public void setDonor(Donor donor)
+    {
+        this.donor = donor;
+    }
+
+    public Taker getTaker()
+    {
+        return taker;
+    }
+
+    public void setTaker(Taker taker)
+    {
+        this.taker = taker;
+    }
+
+    public Volunteers getVolunteers()
+    {
+        return volunteers;
+    }
+
+    public void setVolunteers(Volunteers volunteers)
+    {
+        this.volunteers = volunteers;
     }
 }

@@ -5,7 +5,8 @@
     <title>Food Item</title>
 </head>
 <body>
-<form action="#" th:action="@{/foodItem}" method="POST" th:object="${foodItem}">
+
+<form th:action="@{/foodItem}" method="POST" th:object="${foodItem}">
 
     <label>Name: </label>
     <input type="text" th:field="*{name}"/>
@@ -21,7 +22,6 @@
         <option th:value = "Halal"> Halal </option>
         <option th:value = "'Dairy free'"> Dairy free </option>
     </select>
-
     <label th:if="${#fields.hasErrors('category')}">Incorrect value in the input!</label><br/>
 
     <label>Allergy Information: </label>

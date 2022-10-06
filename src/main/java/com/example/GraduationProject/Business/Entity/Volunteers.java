@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Volunteers")
@@ -18,6 +19,7 @@ public class Volunteers
     @Size(min=3, max=30)
     @Column(name = "Name")
     private String name;
+
     @Size(min=10, max=10)
     @Column(name = "Phone")
     private String phone;
@@ -26,21 +28,29 @@ public class Volunteers
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "DateOfBirth")
     private Date dateOfBirth;
+
     @Email
     @NotBlank
     @Column(name = "EmailId")
     private String emailId;
 
+    @NotBlank
+    @Column(name= "Password")
+    private String password;
+
+    @OneToMany(mappedBy = "volunteers", cascade = CascadeType.ALL)
+    private List<FoodItem> foodItems;
     public Volunteers()
     {
     }
 
-    public Volunteers(String name, String phone, Date dateOfBirth, String emailId)
+    public Volunteers(String name, String phone, Date dateOfBirth, String emailId, String password)
     {
         this.name = name;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.emailId = emailId;
+        this.password = password;
     }
 
     public int getId()
@@ -86,5 +96,25 @@ public class Volunteers
     public void setEmailId(String emailId)
     {
         this.emailId = emailId;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public List<FoodItem> getFoodItems()
+    {
+        return foodItems;
+    }
+
+    public void setFoodItems(List<FoodItem> foodItems)
+    {
+        this.foodItems = foodItems;
     }
 }

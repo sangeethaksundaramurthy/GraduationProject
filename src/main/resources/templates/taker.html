@@ -5,7 +5,8 @@
     <title>Taker</title>
 </head>
 <body>
-<form action="#" th:action="@{/taker}" method="POST" th:object="${taker}">
+
+<form th:action="@{/taker}" method="POST" th:object="${taker}">
 
     <label>Name: </label>
     <input type="text" th:field="*{name}"/>
@@ -32,8 +33,12 @@
     <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
 
     <label>Email ID: </label>
-    <input type="text" th:field="*{emailId}"/>
+    <input type="email" th:field="*{emailId}"/>
     <label th:if="${#fields.hasErrors('emailId')}">Incorrect value in the input!</label><br/>
+
+    <label>Password: </label>
+    <input type="password" th:field="*{password}"/>
+    <label th:if="${#fields.hasErrors('password')}">Incorrect value in the input!</label><br/>
 
     <input type="submit"/>
 

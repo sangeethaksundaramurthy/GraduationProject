@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Donor")
@@ -33,16 +34,23 @@ public class Donor
     @Column(name = "EmailId")
     private String emailId;
 
+    @NotBlank
+    @Column(name= "Password")
+    private String password;
+
+    @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
+    private List<FoodItem> foodItems;
     public Donor()
     {
     }
 
-    public Donor(String name, String phone, Date dateOfBirth, String emailId)
+    public Donor(String name, String phone, Date dateOfBirth, String emailId, String password)
     {
         this.name = name;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.emailId = emailId;
+        this.password = password;
     }
 
     public int getId()
@@ -85,5 +93,25 @@ public class Donor
     public void setEmailId(String emailId)
     {
         this.emailId = emailId;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public List<FoodItem> getFoodItems()
+    {
+        return foodItems;
+    }
+
+    public void setFoodItems(List<FoodItem> foodItems)
+    {
+        this.foodItems = foodItems;
     }
 }
