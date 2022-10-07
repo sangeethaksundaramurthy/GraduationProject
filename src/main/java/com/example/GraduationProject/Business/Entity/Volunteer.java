@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Volunteers")
-public class Volunteers
+@Table(name = "Volunteer")
+public class Volunteer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,20 +31,20 @@ public class Volunteers
 
     @Email
     @NotBlank
-    @Column(name = "EmailId")
+    @Column(name = "EmailId",  unique = true)
     private String emailId;
 
     @NotBlank
     @Column(name= "Password")
     private String password;
 
-    @OneToMany(mappedBy = "volunteers", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
     private List<FoodItem> foodItems;
-    public Volunteers()
+    public Volunteer()
     {
     }
 
-    public Volunteers(String name, String phone, Date dateOfBirth, String emailId, String password)
+    public Volunteer(String name, String phone, Date dateOfBirth, String emailId, String password)
     {
         this.name = name;
         this.phone = phone;
@@ -78,12 +78,12 @@ public class Volunteers
         this.phone = phone;
     }
 
-    public Date getDateOfBirth()
+    public java.util.Date getDateOfBirth()
     {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth)
+    public void setDateOfBirth(java.util.Date dateOfBirth)
     {
         this.dateOfBirth = dateOfBirth;
     }
@@ -108,13 +108,18 @@ public class Volunteers
         this.password = password;
     }
 
-    public List<FoodItem> getFoodItems()
+    public java.util.List<FoodItem> getFoodItems()
     {
         return foodItems;
     }
 
-    public void setFoodItems(List<FoodItem> foodItems)
+    public void setFoodItems(java.util.List<FoodItem> foodItems)
     {
         this.foodItems = foodItems;
+    }
+
+    @Override public String toString()
+    {
+        return "Volunteer{" + "name='" + name + '\'' + ", phone='" + phone + '\'' + ", dateOfBirth=" + dateOfBirth + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
     }
 }

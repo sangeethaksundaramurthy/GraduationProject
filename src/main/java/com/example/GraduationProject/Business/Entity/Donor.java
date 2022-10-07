@@ -22,33 +22,36 @@ public class Donor
     @Size(min = 3, max = 30)
     @Column(name = "Name")
     private String name;
+
+    @Size(min=10, max=50)
+    @Column(name = "Address")
+    private String address;
+
     @Size(min = 10, max = 10)
     @Column(name = "Phone")
     private String phone;
-    @PastOrPresent
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Column(name = "DateOfBirth")
-    private Date dateOfBirth;
+
     @Email
     @NotBlank
-    @Column(name = "EmailId")
+    @Column(name = "EmailId",  unique = true)
     private String emailId;
 
     @NotBlank
-    @Column(name= "Password")
+    @Column(name = "Password")
     private String password;
 
     @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
     private List<FoodItem> foodItems;
+
     public Donor()
     {
     }
 
-    public Donor(String name, String phone, Date dateOfBirth, String emailId, String password)
+    public Donor(String name, String address, String phone, String emailId, String password)
     {
         this.name = name;
+        this.address = address;
         this.phone = phone;
-        this.dateOfBirth = dateOfBirth;
         this.emailId = emailId;
         this.password = password;
     }
@@ -68,21 +71,24 @@ public class Donor
         this.name = name;
     }
 
-    public String getPhone() { return phone; }
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
 
     public void setPhone(String phone)
     {
         this.phone = phone;
-    }
-
-    public Date getDateOfBirth()
-    {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth)
-    {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmailId()
@@ -105,13 +111,18 @@ public class Donor
         this.password = password;
     }
 
-    public List<FoodItem> getFoodItems()
+    public java.util.List<FoodItem> getFoodItems()
     {
         return foodItems;
     }
 
-    public void setFoodItems(List<FoodItem> foodItems)
+    public void setFoodItems(java.util.List<FoodItem> foodItems)
     {
         this.foodItems = foodItems;
+    }
+
+    @Override public String toString()
+    {
+        return "Donor{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", phone='" + phone + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
     }
 }

@@ -42,7 +42,7 @@ public class Taker
 
     @Email
     @NotBlank
-    @Column(name = "EmailId")
+    @Column(name = "EmailId",  unique = true)
     private String emailId;
 
     @NotBlank
@@ -152,18 +152,18 @@ public class Taker
         this.password = password;
     }
 
-    public List<FoodItem> getFoodItems()
+    public java.util.List<FoodItem> getFoodItems()
     {
         return foodItems;
     }
 
-    public void setFoodItems(List<FoodItem> foodItems)
+    public void setFoodItems(java.util.List<FoodItem> foodItems)
     {
         this.foodItems = foodItems;
     }
 
     @Override public String toString()
     {
-        return "Taker{" + "name='" + name + '\'' + ", licenseId='" + licenseId + '\'' + ", address='" + address + '\'' + ", postalCode=" + postalCode + ", phone=" + phone + ", allergyInformation='" + allergyInformation + '\'' + ", emailId='" + emailId + '\'' + '}';
+        return "Taker{" + "name='" + name + '\'' + ", licenseId='" + licenseId + '\'' + ", address='" + address + '\'' + ", postalCode=" + postalCode + ", phone='" + phone + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
     }
 }

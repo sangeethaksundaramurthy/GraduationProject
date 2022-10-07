@@ -16,7 +16,8 @@ public class FoodItem
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private int id;
-    @Size(min=3, max=30)
+
+    @Size(min = 3, max = 30)
     @Column(name = "Name")
     private String name;
 
@@ -24,7 +25,7 @@ public class FoodItem
     @Column(name = "Category")
     private String category;
 
-    @Size(min=3, max=100)
+    @Size(min = 3, max = 100)
     @Column(name = "AllergyInformation")
     private String allergyInformation;
 
@@ -34,7 +35,7 @@ public class FoodItem
     @Column(name = "ExpiryDate")
     private Date expiryDate;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     @Column(name = "Quantity")
     private String quantity;
 
@@ -52,7 +53,7 @@ public class FoodItem
     private Taker taker;
 
     @ManyToOne
-    private Volunteers volunteers;
+    private Volunteer volunteer;
 
     public FoodItem()
     {
@@ -105,12 +106,12 @@ public class FoodItem
         this.allergyInformation = allergyInformation;
     }
 
-    public Date getExpiryDate()
+    public java.util.Date getExpiryDate()
     {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate)
+    public void setExpiryDate(java.util.Date expiryDate)
     {
         this.expiryDate = expiryDate;
     }
@@ -145,33 +146,38 @@ public class FoodItem
         this.image = image;
     }
 
-    public Donor getDonor()
+    public com.example.GraduationProject.Business.Entity.Donor getDonor()
     {
         return donor;
     }
 
-    public void setDonor(Donor donor)
+    public void setDonor(com.example.GraduationProject.Business.Entity.Donor donor)
     {
         this.donor = donor;
     }
 
-    public Taker getTaker()
+    public com.example.GraduationProject.Business.Entity.Taker getTaker()
     {
         return taker;
     }
 
-    public void setTaker(Taker taker)
+    public void setTaker(com.example.GraduationProject.Business.Entity.Taker taker)
     {
         this.taker = taker;
     }
 
-    public Volunteers getVolunteers()
+    public Volunteer getVolunteers()
     {
-        return volunteers;
+        return volunteer;
     }
 
-    public void setVolunteers(Volunteers volunteers)
+    public void setVolunteers(Volunteer volunteer)
     {
-        this.volunteers = volunteers;
+        this.volunteer = volunteer;
+    }
+
+    @Override public String toString()
+    {
+        return "FoodItem{" + "name='" + name + '\'' + ", category='" + category + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", expiryDate=" + expiryDate + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
     }
 }
