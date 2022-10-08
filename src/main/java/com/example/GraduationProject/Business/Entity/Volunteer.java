@@ -1,5 +1,6 @@
 package com.example.GraduationProject.Business.Entity;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,7 +21,16 @@ public class Volunteer
     @Column(name = "Name")
     private String name;
 
-    @Size(min=10, max=10)
+    @Size(min=10, max=50)
+    @Column(name = "Address")
+    private String address;
+
+    @NotNull
+    @Range(min= 10000, max = 999999)
+    @Column(name = "PostalCode")
+    private Integer postalCode;
+
+    @Size(min=10, max=13)
     @Column(name = "Phone")
     private String phone;
 
@@ -44,9 +54,10 @@ public class Volunteer
     {
     }
 
-    public Volunteer(String name, String phone, Date dateOfBirth, String emailId, String password)
-    {
+    public Volunteer(String name, String address, Integer postalCode, String phone, Date dateOfBirth, String emailId, String password) {
         this.name = name;
+        this.address = address;
+        this.postalCode = postalCode;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.emailId = emailId;
@@ -66,6 +77,22 @@ public class Volunteer
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getPhone()
@@ -118,8 +145,17 @@ public class Volunteer
         this.foodItems = foodItems;
     }
 
-    @Override public String toString()
-    {
-        return "Volunteer{" + "name='" + name + '\'' + ", phone='" + phone + '\'' + ", dateOfBirth=" + dateOfBirth + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
+    @Override
+    public String toString() {
+        return "Volunteer{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode=" + postalCode +
+                ", phone='" + phone + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", emailId='" + emailId + '\'' +
+                ", password='" + password + '\'' +
+                ", foodItems=" + foodItems +
+                '}';
     }
 }

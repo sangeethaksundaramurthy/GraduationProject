@@ -19,9 +19,6 @@ public class Taker
     @Column(name = "Name")
     private String name;
 
-    @Size(min=5, max=15)
-    @Column(name = "LicenseId")
-    private String licenseId;
 
     @Size(min=10, max=50)
     @Column(name = "Address")
@@ -55,10 +52,9 @@ public class Taker
     {
     }
 
-    public Taker(String name, String licenseId, String address, Integer postalCode, String phone, String allergyInformation, String emailId, String password)
+    public Taker(String name, String address, Integer postalCode, String phone, String allergyInformation, String emailId, String password)
     {
         this.name = name;
-        this.licenseId = licenseId;
         this.address = address;
         this.postalCode = postalCode;
         this.phone = phone;
@@ -80,16 +76,6 @@ public class Taker
     public void setName(String name)
     {
         this.name = name;
-    }
-
-    public String getLicenseId()
-    {
-        return licenseId;
-    }
-
-    public void setLicenseId(String licenseId)
-    {
-        this.licenseId = licenseId;
     }
 
     public String getAddress()
@@ -162,8 +148,17 @@ public class Taker
         this.foodItems = foodItems;
     }
 
-    @Override public String toString()
-    {
-        return "Taker{" + "name='" + name + '\'' + ", licenseId='" + licenseId + '\'' + ", address='" + address + '\'' + ", postalCode=" + postalCode + ", phone='" + phone + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
+    @Override
+    public String toString() {
+        return "Taker{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode=" + postalCode +
+                ", phone='" + phone + '\'' +
+                ", allergyInformation='" + allergyInformation + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", password='" + password + '\'' +
+                ", foodItems=" + foodItems +
+                '}';
     }
 }

@@ -1,57 +1,103 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Food Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be aHand - Donation Form</title>
+
+    <!-- Favicon, CSS & JS -->
+    <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="style/foodItem.css">
+    <script src="js/client.js" defer></script>
+
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
-<body>
+
+<body onload="getBlobstoreURL()">
 
 <form th:action="@{/foodItem}" method="POST" th:object="${foodItem}">
 
-    <label>Name: </label>
-    <input type="text" th:field="*{name}"/>
-    <label th:if="${#fields.hasErrors('name')}">Incorrect value in the input!</label><br/>
+    <h2 class="center">MAKE FOOD DONATION</h2>
 
-    <label>Category: </label>
-    <select th:field="*{category}" required>
-        <option th:value = "'Choose one...'"> Choose one... </option>
-        <option th:value = "Vegan"> Vegan </option>
-        <option th:value = "Vegetarian"> Vegetarian </option>
-        <option th:value = "Eggetarian"> Eggetarian </option>
-        <option th:value = "'Non Vegetarian'"> Non Vegetarian </option>
-        <option th:value = "Halal"> Halal </option>
-        <option th:value = "'Dairy free'"> Dairy free </option>
+    <!-- Name -->
+    <label><b>Name</b></label>
+    <input placeholder="Name" name="restaurantName" required
+           th:field="*{name}"/>
+
+
+    <!-- Location -->
+    <label><b>Location</b></label>
+    <input
+            type="text"
+            class="password"
+            placeholder="Address"
+            required
+            th:field="*{address}"
+    />
+    <label th:if="${#fields.hasErrors('address')}">Incorrect value in the input!</label><br/>
+
+    <!-- Food Category -->
+    <label><b>Food Category</b></label> Choose multiple options by pressing the command/ctrl key
+    <br>
+    <select th:field="*{category}" class="mdb-select colorful-select dropdown-primary md-form" name= "category" multiple searchable="Search here..">
+        <option th:value = "'Choose one...'" disabled selected>Select food categories</option>
+        <option th:value = "Vegan">Vegan</option>
+        <option th:value = "Vegetarian">Vegetarian</option>
+        <option th:value = "'Non Vegetarian'">Non-Vegetarian</option>
+        <option th:value = "'Dairy free'">Dairy-Free</option>
+        <option th:value = "Halal">Halal</option>
     </select>
     <label th:if="${#fields.hasErrors('category')}">Incorrect value in the input!</label><br/>
 
-    <label>Allergy Information: </label>
-    <textarea th:field="*{allergyInformation}"> </textarea>
-    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
+    <br>
 
-    <label>Expiry Date: </label>
-    <input type="date" th:field="*{expiryDate}"/>
+    <!-- Date & Time -->
+    <br>
+    <label><b>Best before date</b></label>
+    <input type="date" name="pickUpTime" required th:field="*{expiryDate}"/>
     <label th:if="${#fields.hasErrors('expiryDate')}">Incorrect value in the input!</label><br/>
 
-    <label>Quantity: </label>
-    <textarea th:field="*{quantity}"> </textarea>
+
+    <label><b>Time for pick-up</b></label>
+    <input type="time" id="appt" name="appt"
+           min="09:00" max="18:00" required
+           th:field="*{time}"/>
+    <label th:if="${#fields.hasErrors('time')}">Incorrect value in the input!</label><br/>
+
+
+
+    <!-- Supply -->
+    <label><b>Specify food amount by how many people it is sufficient for:</b></label>
+    <input type="number" step="1" placeholder="Specify food capacity" name="quantity" required
+           th:field="*{quantity}"/>
+
+    <!-- Special Instructions -->
+    <label><b>Special Instructions</b></label>
+    <input placeholder="Enter any special instructions" name="specialInstructions">
     <label th:if="${#fields.hasErrors('quantity')}">Incorrect value in the input!</label><br/>
 
-    <label>Status: </label>
-    <select th:field="*{status}"  required>
-        <option th:value = "'Choose one...'"> Choose one... </option>
-        <option th:value = "Available"> Available </option>
-        <option th:value = "Accepted"> Accepted </option>
-        <option th:value = "'Picked up'"> Picked up </option>
-        <option th:value = "Received"> Received </option>
-    </select>
-    <label th:if="${#fields.hasErrors('status')}">Incorrect value in the input!</label><br/>
-
-    <label>Image: </label>
-    <input type="file" th:field="*{image}"/>
+    <!-- Images -->
+    <br>
+    <label><b>Upload an image:</b></label>
+    <input type="file" name="image" th:field="*{image}">
     <label th:if="${#fields.hasErrors('image')}">Incorrect value in the input!</label><br/>
 
-    <input type="submit"/>
 
+    <!-- Submit & Cancel -->
+    <button type="submit" class="btn">Submit Donation</button>
+    <button type="submit" class="btn cancel" onclick="">Cancel</button>
 </form>
+
 </body>
 </html>

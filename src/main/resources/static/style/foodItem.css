@@ -1,0 +1,70 @@
+/* Make Donation button */
+
+    body { background: #fff0cd !important;
+    margin: 10px !important;
+    font-family: "Poppins", sans-serif !important; }
+
+.form-container {
+    margin: auto;
+    max-width: 1000px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-container h2 {
+  margin-top: 5px;
+    margin-bottom: 20px;
+    color: #ffb606;
+    font-family: ubuntu !important;
+}
+
+/* Full-width input fields */
+.form-container input {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    color: gray;
+}
+
+/* When the form inputs are in focus */
+.form-container input:focus {
+
+    outline: none;
+    border-color: #ffb606;
+}
+
+/* Submit donation button */
+.form-container .btn {
+    background-color: #ffb606;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+/* Cancel button */
+.form-container .cancel {
+    background-color: lightslategray;
+}
+

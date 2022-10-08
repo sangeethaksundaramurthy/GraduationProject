@@ -19,11 +19,11 @@ public class VolunteerController
     @Autowired
     VolunteersService service;
 
-    @GetMapping("volunteers")
+    @GetMapping("volunteer")
     public String volunteersGet(Model model)
     {
-        model.addAttribute("volunteers", new Volunteer());
-        return "volunteers";
+        model.addAttribute("volunteer", new Volunteer());
+        return "volunteer";
     }
 
     @PostMapping("/volunteer")

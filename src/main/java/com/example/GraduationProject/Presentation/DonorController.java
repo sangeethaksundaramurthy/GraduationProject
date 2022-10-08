@@ -43,7 +43,7 @@ public class DonorController
         if(donor == null)
         {
             System.out.println("redirect");
-            return "redirect:/taker";
+            return "redirect:/donor";
         }
         else
             return "home";

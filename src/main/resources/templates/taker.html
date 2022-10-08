@@ -131,17 +131,27 @@
                     <i class="uil uil-location-point"></i>
                     <label th:if="${#fields.hasErrors('postalCode')}">Incorrect value in the input!</label><br/>
                 </div>
+                <!--<div class="input-field">
+                    <input
+                            type="text"
+                            class="password"
+                            placeholder="Phone Number"
+                            required
+                            th:field="*{phone}"
+                    />
+                    <i class="uil uil-phone-alt"></i>
+                </div>-->
                 <div class="input-field">
                     <input
                             type="password"
                             class="password"
-                            placeholder="Liscense ID"
+                            placeholder="Phone Number"
                             required
-                            th:field="*{licenseId}"
+                            th:field="*{phone}"
                     />
-                    <i class="uil uil-keyhole-circle"></i>
-                    <i class="uil uil-eye-slash showHidePw"></i>
-                    <label th:if="${#fields.hasErrors('licenseId')}">Incorrect value in the input!</label><br/>
+                    <i class="uil uil-phone-alt"></i>
+                    <label th:if="${#fields.hasErrors('phone')}">Incorrect value in the input!</label><br/>
+
                 </div>
                 <div class="input-field">
                     <input
@@ -191,7 +201,7 @@
     </div>
 </div>
 
-<script src="javascript/taker.js"></script>
+<script src="javascript/script.js"></script>
 </body>
 </html>
 

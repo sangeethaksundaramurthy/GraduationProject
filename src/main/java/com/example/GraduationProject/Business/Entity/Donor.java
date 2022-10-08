@@ -1,12 +1,10 @@
 package com.example.GraduationProject.Business.Entity;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +24,11 @@ public class Donor
     @Size(min=10, max=50)
     @Column(name = "Address")
     private String address;
+
+    @NotNull
+    @Range(min= 10000, max = 999999)
+    @Column(name = "PostalCode")
+    private Integer postalCode;
 
     @Size(min = 10, max = 10)
     @Column(name = "Phone")
@@ -47,10 +50,10 @@ public class Donor
     {
     }
 
-    public Donor(String name, String address, String phone, String emailId, String password)
-    {
+    public Donor(String name, String address, Integer postalCode, String phone, String emailId, String password) {
         this.name = name;
         this.address = address;
+        this.postalCode = postalCode;
         this.phone = phone;
         this.emailId = emailId;
         this.password = password;
@@ -79,6 +82,14 @@ public class Donor
     public void setAddress(String address)
     {
         this.address = address;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getPhone()
@@ -121,8 +132,16 @@ public class Donor
         this.foodItems = foodItems;
     }
 
-    @Override public String toString()
-    {
-        return "Donor{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", phone='" + phone + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foodItems=" + foodItems + '}';
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode=" + postalCode +
+                ", phone='" + phone + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", password='" + password + '\'' +
+                ", foodItems=" + foodItems +
+                '}';
     }
 }

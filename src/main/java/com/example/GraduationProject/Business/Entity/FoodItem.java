@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
@@ -35,6 +36,12 @@ public class FoodItem
     @Column(name = "ExpiryDate")
     private Date expiryDate;
 
+    @NotNull
+    @FutureOrPresent
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Column(name = "Time")
+    private Time time;
+
     @Size(min = 1, max = 100)
     @Column(name = "Quantity")
     private String quantity;
@@ -59,16 +66,15 @@ public class FoodItem
     {
     }
 
-    public FoodItem(String name, String category, String allergyInformation, Date expiryDate, String quantity, String status, String image, Donor donor)
-    {
+    public FoodItem(String name, String category, String allergyInformation, Date expiryDate, Time time, String quantity, String status, String image) {
         this.name = name;
         this.category = category;
         this.allergyInformation = allergyInformation;
         this.expiryDate = expiryDate;
+        this.time = time;
         this.quantity = quantity;
         this.status = status;
         this.image = image;
-        this.donor = donor;
     }
 
     public int getId()
@@ -106,14 +112,20 @@ public class FoodItem
         this.allergyInformation = allergyInformation;
     }
 
-    public java.util.Date getExpiryDate()
-    {
+    public Date getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(java.util.Date expiryDate)
-    {
+    public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 
     public String getQuantity()
@@ -176,8 +188,17 @@ public class FoodItem
         this.volunteer = volunteer;
     }
 
-    @Override public String toString()
-    {
-        return "FoodItem{" + "name='" + name + '\'' + ", category='" + category + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", expiryDate=" + expiryDate + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
+    @Override
+    public String toString() {
+        return "FoodItem{" +
+                "name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", allergyInformation='" + allergyInformation + '\'' +
+                ", expiryDate=" + expiryDate +
+                ", time=" + time +
+                ", quantity='" + quantity + '\'' +
+                ", status='" + status + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

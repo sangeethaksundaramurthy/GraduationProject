@@ -78,9 +78,8 @@ body {
 .container {
   position: relative;
   max-width: 500px;
-  width: 100%;
+  width: 200%;
   /* From https://css.glass */
-
   background-color: #fff0cd;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -92,7 +91,7 @@ body {
 .container .forms {
   display: flex;
   align-items: center;
-  height: 360px;
+  height: 350px;
   width: 200%;
   transition: height 0.2s ease;
 }
@@ -125,8 +124,9 @@ body {
   transition: opacity 0.2s ease;
 }
 
+/* .signup */
 .container.active .forms {
-  height: 650px;
+  height: 750px;
 }
 .container .form .title {
   position: relative;
@@ -204,7 +204,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .checkbox-text .checkbox-content {
@@ -217,10 +217,10 @@ body {
   accent-color: #ffb606;
 }
 
-.form .text {
+/* .form .text {
   color: #333;
   font-size: 14px;
-}
+} */
 
 .form a.text {
   color: #ffb606;
@@ -254,4 +254,5 @@ body {
 .form .login-signup {
   margin-bottom: 15px;
   text-align: center;
+  margin-top: 15px;
 }
