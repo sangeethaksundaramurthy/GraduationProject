@@ -29,7 +29,7 @@ public class Taker
     @Column(name = "PostalCode")
     private Integer postalCode;
 
-    @Size(min=10, max=10)
+    @Size(min=10, max=13)
     @Column(name = "Phone")
     private String phone;
 
@@ -47,7 +47,7 @@ public class Taker
     private String password;
 
     @OneToMany(mappedBy = "taker", cascade = CascadeType.ALL)
-    private List<FoodItem> foodItems;
+    private List<Food> foods;
     public Taker()
     {
     }
@@ -138,14 +138,14 @@ public class Taker
         this.password = password;
     }
 
-    public java.util.List<FoodItem> getFoodItems()
+    public java.util.List<Food> getFoodItems()
     {
-        return foodItems;
+        return foods;
     }
 
-    public void setFoodItems(java.util.List<FoodItem> foodItems)
+    public void setFoodItems(java.util.List<Food> foods)
     {
-        this.foodItems = foodItems;
+        this.foods = foods;
     }
 
     @Override
@@ -158,7 +158,7 @@ public class Taker
                 ", allergyInformation='" + allergyInformation + '\'' +
                 ", emailId='" + emailId + '\'' +
                 ", password='" + password + '\'' +
-                ", foodItems=" + foodItems +
+                ", foods=" + foods +
                 '}';
     }
 }

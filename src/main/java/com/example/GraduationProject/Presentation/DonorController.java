@@ -37,7 +37,7 @@ public class DonorController
         return "home";
     }
     @PostMapping("/signInDonor")
-    public String loginPost(@RequestParam String emailId, @RequestParam String password)
+    public String signInDonor(@RequestParam String emailId, @RequestParam String password)
     {
         Donor donor = service.authenticate(emailId,password);
         if(donor == null)

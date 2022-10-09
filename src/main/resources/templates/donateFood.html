@@ -9,7 +9,7 @@
     <!-- Favicon, CSS & JS -->
     <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="style/foodItem.css">
+    <link rel="stylesheet" href="style/donateFood.css">
     <script src="js/client.js" defer></script>
 
     <link
@@ -26,7 +26,7 @@
 
 <body onload="getBlobstoreURL()">
 
-<form th:action="@{/foodItem}" method="POST" th:object="${foodItem}">
+<form th:action="@{/foodItem}" method="POST" th:object="${food}">
 
     <h2 class="center">MAKE FOOD DONATION</h2>
 
@@ -37,6 +37,7 @@
 
 
     <!-- Location -->
+    <br>
     <label><b>Location</b></label>
     <input
             type="text"
@@ -83,6 +84,7 @@
            th:field="*{quantity}"/>
 
     <!-- Special Instructions -->
+    <br>
     <label><b>Special Instructions</b></label>
     <input placeholder="Enter any special instructions" name="specialInstructions">
     <label th:if="${#fields.hasErrors('quantity')}">Incorrect value in the input!</label><br/>

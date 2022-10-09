@@ -38,7 +38,7 @@ public class TakerController
         }
     }
     @PostMapping("/signInTaker")
-    public String loginPost(@RequestParam String emailId, @RequestParam String password)
+    public String signInTaker(@RequestParam String emailId, @RequestParam String password)
     {
         Taker taker = service.authenticate(emailId,password);
         if(taker == null)
