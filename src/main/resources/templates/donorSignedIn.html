@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Donor</title>
+</head>
+<body>
+<form th:action="@{/donateFood}" method="GET" th:object="${donor}">
+    You are signed in as
+    <label th:text ="*{emailId}"></label> <br />
+    <input type="submit" value="Make aDonation" name = "makeADonation"/> <br />
+    <input type="submit" value="Recent Donations" name = "recentDonations"/> <br />
+</form>
+</body>
+</html>

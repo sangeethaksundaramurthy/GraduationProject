@@ -49,7 +49,7 @@ public class Volunteer
     private String password;
 
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
-    private List<FoodItem> foodItems;
+    private List<Food> foods;
     public Volunteer()
     {
     }
@@ -135,14 +135,14 @@ public class Volunteer
         this.password = password;
     }
 
-    public java.util.List<FoodItem> getFoodItems()
+    public java.util.List<Food> getFoodItems()
     {
-        return foodItems;
+        return foods;
     }
 
-    public void setFoodItems(java.util.List<FoodItem> foodItems)
+    public void setFoodItems(java.util.List<Food> foods)
     {
-        this.foodItems = foodItems;
+        this.foods = foods;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class Volunteer
                 ", dateOfBirth=" + dateOfBirth +
                 ", emailId='" + emailId + '\'' +
                 ", password='" + password + '\'' +
-                ", foodItems=" + foodItems +
+                ", foods=" + foods +
                 '}';
     }
 }

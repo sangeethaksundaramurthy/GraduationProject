@@ -26,11 +26,11 @@ public class TakerController
         return "taker";
     }
 
-    @PostMapping("/taker")
+    @PostMapping("/addNewTaker")
     public String takerPost(@Valid @ModelAttribute Taker taker, BindingResult bindingresult, Model model)
     {
         if(bindingresult.hasErrors())
-            return "taker";
+            return "/taker";
         else
         {
             service.save(taker);
@@ -38,7 +38,7 @@ public class TakerController
         }
     }
     @PostMapping("/signInTaker")
-    public String loginPost(@RequestParam String emailId, @RequestParam String password)
+    public String signInTaker(@RequestParam String emailId, @RequestParam String password, Model model)
     {
         Taker taker = service.authenticate(emailId,password);
         if(taker == null)
@@ -47,6 +47,10 @@ public class TakerController
             return "redirect:/taker";
         }
         else
-            return "home";
+        {
+            model.addAttribute("taker", taker);
+            return "takerSignedIn";
+        }
+
     }
 }

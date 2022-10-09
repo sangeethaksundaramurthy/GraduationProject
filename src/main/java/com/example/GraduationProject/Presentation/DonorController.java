@@ -2,6 +2,7 @@ package com.example.GraduationProject.Presentation;
 
 import com.example.GraduationProject.Business.DonorService;
 import com.example.GraduationProject.Business.Entity.Donor;
+import com.example.GraduationProject.Business.Entity.Food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -21,32 +23,61 @@ public class DonorController
     DonorService service;
 
     @GetMapping("donor")
-    public String donorGet(Model model)
+    public ModelAndView donor()
     {
-        model.addAttribute("donor", new Donor());
-        return "donor";
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("donor", new Donor());
+        mav.setViewName("donor");
+        return mav;
     }
 
-    @PostMapping("/donor")
-    public String donorPost(@Valid @ModelAttribute Donor donor, BindingResult bindingresult, Model model)
+    @PostMapping(value= "/addNewDonor")
+    public ModelAndView addNewDonor(@Valid @ModelAttribute Donor donor, BindingResult bindingresult)
     {
+        ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
-            return "donor";
-
-        service.save(donor);
-        return "home";
+        {
+            mav.addObject("id",1);
+            mav.setViewName("redirect:/donor/{id}");
+        }
+        else
+        {
+            service.save(donor);
+            mav.setViewName("home");
+        }
+        return mav;
     }
     @PostMapping("/signInDonor")
-    public String loginPost(@RequestParam String emailId, @RequestParam String password)
+    public ModelAndView signInDonor(@RequestParam String emailId, @RequestParam String password)
     {
+        ModelAndView mav = new ModelAndView();
         Donor donor = service.authenticate(emailId,password);
         if(donor == null)
         {
-            System.out.println("redirect");
-            return "redirect:/donor";
+            mav.setViewName("redirect:/donor");
         }
         else
-            return "home";
+        {
+            mav.addObject("donor", donor);
+            mav.setViewName("donorSignedIn");
+        }
+        return  mav;
     }
 
+    @GetMapping(value = "/donateFood", params = "makeADonation")
+    public ModelAndView donateFood_makeADonation()
+    {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("food", new Food());
+        mav.setViewName("donateFood");
+        return mav;
+    }
+
+    @GetMapping(value = "/donateFood", params = "recentDonations")
+    public ModelAndView donateFood_recentDonations()
+    {
+        ModelAndView mav = new ModelAndView();
+
+        return mav;
+    }
 }

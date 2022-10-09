@@ -10,8 +10,8 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-@Table(name = "FoodItem")
-public class FoodItem
+@Table(name = "Food")
+public class Food
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,13 +22,14 @@ public class FoodItem
     @Column(name = "Name")
     private String name;
 
+
+    @Size(min=10, max=50)
+    @Column(name = "Address")
+    private String address;
+
     @NotNull
     @Column(name = "Category")
     private String category;
-
-    @Size(min = 3, max = 100)
-    @Column(name = "AllergyInformation")
-    private String allergyInformation;
 
     @NotNull
     @FutureOrPresent
@@ -37,7 +38,6 @@ public class FoodItem
     private Date expiryDate;
 
     @NotNull
-    @FutureOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     @Column(name = "Time")
     private Time time;
@@ -49,6 +49,10 @@ public class FoodItem
     @NotNull
     @Column(name = "Status")
     private String status;
+
+    @Size(min = 3, max = 100)
+    @Column(name = "AllergyInformation")
+    private String allergyInformation;
 
     @Column(name = "Image")
     private String image;
@@ -62,18 +66,20 @@ public class FoodItem
     @ManyToOne
     private Volunteer volunteer;
 
-    public FoodItem()
+    public Food()
     {
     }
 
-    public FoodItem(String name, String category, String allergyInformation, Date expiryDate, Time time, String quantity, String status, String image) {
+    public Food(String name, String address, String category, Date expiryDate, Time time, String quantity, String status, String allergyInformation, String image)
+    {
         this.name = name;
+        this.address = address;
         this.category = category;
-        this.allergyInformation = allergyInformation;
         this.expiryDate = expiryDate;
         this.time = time;
         this.quantity = quantity;
         this.status = status;
+        this.allergyInformation = allergyInformation;
         this.image = image;
     }
 
@@ -92,6 +98,16 @@ public class FoodItem
         this.name = name;
     }
 
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
     public String getCategory()
     {
         return category;
@@ -102,29 +118,23 @@ public class FoodItem
         this.category = category;
     }
 
-    public String getAllergyInformation()
+    public Date getExpiryDate()
     {
-        return allergyInformation;
-    }
-
-    public void setAllergyInformation(String allergyInformation)
-    {
-        this.allergyInformation = allergyInformation;
-    }
-
-    public Date getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(Date expiryDate)
+    {
         this.expiryDate = expiryDate;
     }
 
-    public Time getTime() {
+    public Time getTime()
+    {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Time time)
+    {
         this.time = time;
     }
 
@@ -148,6 +158,16 @@ public class FoodItem
         this.status = status;
     }
 
+    public String getAllergyInformation()
+    {
+        return allergyInformation;
+    }
+
+    public void setAllergyInformation(String allergyInformation)
+    {
+        this.allergyInformation = allergyInformation;
+    }
+
     public String getImage()
     {
         return image;
@@ -158,47 +178,38 @@ public class FoodItem
         this.image = image;
     }
 
-    public com.example.GraduationProject.Business.Entity.Donor getDonor()
+    public Donor getDonor()
     {
         return donor;
     }
 
-    public void setDonor(com.example.GraduationProject.Business.Entity.Donor donor)
+    public void setDonor(Donor donor)
     {
         this.donor = donor;
     }
 
-    public com.example.GraduationProject.Business.Entity.Taker getTaker()
+    public Taker getTaker()
     {
         return taker;
     }
 
-    public void setTaker(com.example.GraduationProject.Business.Entity.Taker taker)
+    public void setTaker(Taker taker)
     {
         this.taker = taker;
     }
 
-    public Volunteer getVolunteers()
+    public Volunteer getVolunteer()
     {
         return volunteer;
     }
 
-    public void setVolunteers(Volunteer volunteer)
+    public void setVolunteer(Volunteer volunteer)
     {
         this.volunteer = volunteer;
     }
 
-    @Override
-    public String toString() {
-        return "FoodItem{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", allergyInformation='" + allergyInformation + '\'' +
-                ", expiryDate=" + expiryDate +
-                ", time=" + time +
-                ", quantity='" + quantity + '\'' +
-                ", status='" + status + '\'' +
-                ", image='" + image + '\'' +
-                '}';
+    @Override public String toString()
+    {
+        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", expiryDate=" + expiryDate + ", time=" + time + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
     }
 }

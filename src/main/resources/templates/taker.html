@@ -35,13 +35,13 @@
             <a href="contact.html" id="Contact">Contact</a>
         </li>
         <li>
-            <a href="beAHand.html" id="BeaHand-button">Be aHand</a>
+            <a href="/volunteer" id="volunteer-button">Be aVolunteer</a>
+        </li>
+        <li>
+            <a href="/donor" id="BeaHand-button">Be aHand</a>
         </li>
         <li>
             <a href="/" id="TakeaHand-button">Home</a>
-        </li>
-        <li>
-            <a href="#Volunteer" id="volunteer-button">Be aVolunteer</a>
         </li>
         <img src="images/BeaHand.png" class="navbar-logo" />
         <div class="name">Be aHand</div>
@@ -102,7 +102,7 @@
             </div>
             <span class="title">Registration</span>
 
-            <form th:action="@{/taker}" method="POST" th:object="${taker}">
+            <form th:action="@{/addNewTaker}" method="POST" th:object="${taker}" name ="addNewTaker">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your name" required th:field="*{name}" />
                     <i class="uil uil-user"></i>
@@ -131,19 +131,9 @@
                     <i class="uil uil-location-point"></i>
                     <label th:if="${#fields.hasErrors('postalCode')}">Incorrect value in the input!</label><br/>
                 </div>
-                <!--<div class="input-field">
-                    <input
-                            type="text"
-                            class="password"
-                            placeholder="Phone Number"
-                            required
-                            th:field="*{phone}"
-                    />
-                    <i class="uil uil-phone-alt"></i>
-                </div>-->
                 <div class="input-field">
                     <input
-                            type="password"
+                            type="text"
                             class="password"
                             placeholder="Phone Number"
                             required

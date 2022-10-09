@@ -20,23 +20,26 @@ public class VolunteerController
     VolunteersService service;
 
     @GetMapping("volunteer")
-    public String volunteersGet(Model model)
+    public String volunteerGet(Model model)
     {
         model.addAttribute("volunteer", new Volunteer());
         return "volunteer";
     }
 
     @PostMapping("/volunteer")
-    public String volunteersPost(@Valid @ModelAttribute Volunteer volunteer, BindingResult bindingresult, Model model)
+    public String volunteerPost(@Valid @ModelAttribute Volunteer volunteer, BindingResult bindingresult, Model model)
     {
         if(bindingresult.hasErrors())
             return "volunteer";
+        else
+        {
+            service.save(volunteer);
+            return "home";
+        }
 
-        service.save(volunteer);
-        return "home";
     }
     @PostMapping("/signInVolunteer")
-    public String loginPost(@RequestParam String emailId, @RequestParam String password)
+    public String signInVolunteer(@RequestParam String emailId, @RequestParam String password)
     {
         Volunteer volunteer = service.authenticate(emailId, password);
         if(volunteer == null)
