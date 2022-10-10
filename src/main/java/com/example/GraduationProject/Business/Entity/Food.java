@@ -10,7 +10,6 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "Food")
@@ -21,54 +20,40 @@ public class Food
     private int id;
     @Size(min = 3, max = 30)
     private String name;
-    @Size(min=10, max=50)
+    @Size(min = 10, max = 50)
     private String address;
     @NotNull
     private String category;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate createdDate;
     @NotNull
     @FutureOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate bestBefore;
     @NotNull
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private String pickUpTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime pickUpDateAndTime;
     @Size(min = 1, max = 100)
     @Positive
     private String quantity;
+    @Enumerated(EnumType.STRING)
     private FoodStatus status;
-
     @Size(min = 3, max = 100)
     private String allergyInformation;
-
-
+    private Boolean pickUpRequired;
     private String image;
-
     @ManyToOne
     private Donor donor;
-
     @ManyToOne
     private Taker taker;
-
     @ManyToOne
     private Volunteer volunteer;
 
     public Food()
     {
-        this.status= FoodStatus.AVAILABLE;
+        this.createdDate = LocalDate.now();
+        this.status = FoodStatus.AVAILABLE;
     }
-
-/*    public Food(String name, String address, String category, LocalDate bestBefore, LocalTime pickUpTime, String quantity, String status, String allergyInformation, String image)
-    {
-        this.name = name;
-        this.address = address;
-        this.category = category;
-        this.bestBefore = bestBefore;
-        this.pickUpTime = pickUpTime;
-        this.quantity = quantity;
-        this.status = ;
-        this.allergyInformation = allergyInformation;
-        this.image = image;
-    }*/
 
     public int getId()
     {
@@ -105,6 +90,16 @@ public class Food
         this.category = category;
     }
 
+    public LocalDate getCreatedDate()
+    {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate)
+    {
+        this.createdDate = createdDate;
+    }
+
     public LocalDate getBestBefore()
     {
         return bestBefore;
@@ -115,14 +110,14 @@ public class Food
         this.bestBefore = bestBefore;
     }
 
-    public String getPickUpTime()
+    public LocalDateTime getPickUpDateAndTime()
     {
-        return pickUpTime;
+        return pickUpDateAndTime;
     }
 
-    public void setPickUpTime(String pickUpTime)
+    public void setPickUpDateAndTime(LocalDateTime pickUpDateAndTime)
     {
-        this.pickUpTime = pickUpTime;
+        this.pickUpDateAndTime = pickUpDateAndTime;
     }
 
     public String getQuantity()
@@ -153,6 +148,16 @@ public class Food
     public void setAllergyInformation(String allergyInformation)
     {
         this.allergyInformation = allergyInformation;
+    }
+
+    public Boolean getPickUpRequired()
+    {
+        return pickUpRequired;
+    }
+
+    public void setPickUpRequired(Boolean pickUpRequired)
+    {
+        this.pickUpRequired = pickUpRequired;
     }
 
     public String getImage()
@@ -197,6 +202,6 @@ public class Food
 
     @Override public String toString()
     {
-        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", bestBefore=" + bestBefore + ", pickUpTime=" + pickUpTime + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
+        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", createdDate=" + createdDate + ", bestBefore=" + bestBefore + ", pickUpDateAndTime=" + pickUpDateAndTime + ", quantity='" + quantity + '\'' + ", status=" + status + ", allergyInformation='" + allergyInformation + '\'' + ", pickUpRequired=" + pickUpRequired + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
     }
 }

@@ -73,7 +73,7 @@
         <div class="name">Be aHand</div>
     </ul>
 </div>
-<form th:action="@{/donateFood}" method="GET" th:object="${donor}">
+<form th:action="@{/donor}" method="GET" th:object="${donor}">
 
     <div class= "donor">
         <h1>Profile</h1>
@@ -87,12 +87,12 @@
         <div class="lower">
             <div class="tabs">
                 <i class="uil uil-history"></i>
-                <a href="history">Donation History</a>
+                <a href="/history">Donation History</a>
             </div>
 
             <div class="tabs">
                 <i class="uil uil-calender"></i>
-                <a href="/donateFood">Schedule Donation</a>
+                <a href="/food">Schedule Donation</a>
             </div>
 
             <div class="tabs">
@@ -103,7 +103,7 @@
         </div>
 
         <div>
-            <button onClick={logout} class="signup_btn">
+            <button onClick={logout} class="signup_btn" type="submit" name="logout">
                 Logout
             </button>
         </div>

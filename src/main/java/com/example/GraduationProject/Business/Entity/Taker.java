@@ -12,55 +12,28 @@ public class Taker
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
     private int id;
-
-    @Size(min=3, max=30)
-    @Column(name = "Name")
+    @Size(min = 3, max = 30)
     private String name;
-
-
-    @Size(min=10, max=50)
-    @Column(name = "Address")
+    @Size(min = 10, max = 50)
     private String address;
-
     @NotNull
-    @Range(min= 10000, max = 999999)
-    @Column(name = "PostalCode")
+    @Range(min = 10000, max = 999999)
     private Integer postalCode;
-
-    @Size(min=10, max=13)
-    @Column(name = "Phone")
+    @Size(min = 10, max = 13)
     private String phone;
-
-    @Size(min =0, max=50)
-    @Column(name = "AllergyInformation")
+    @Size(min = 0, max = 50)
     private String allergyInformation;
-
     @Email
     @NotBlank
-    @Column(name = "EmailId",  unique = true)
     private String emailId;
-
     @NotBlank
-    @Column(name= "Password")
     private String password;
-
     @OneToMany(mappedBy = "taker", cascade = CascadeType.ALL)
     private List<Food> foods;
+
     public Taker()
     {
-    }
-
-    public Taker(String name, String address, Integer postalCode, String phone, String allergyInformation, String emailId, String password)
-    {
-        this.name = name;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.allergyInformation = allergyInformation;
-        this.emailId = emailId;
-        this.password = password;
     }
 
     public int getId()
@@ -146,19 +119,5 @@ public class Taker
     public void setFoodItems(java.util.List<Food> foods)
     {
         this.foods = foods;
-    }
-
-    @Override
-    public String toString() {
-        return "Taker{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", postalCode=" + postalCode +
-                ", phone='" + phone + '\'' +
-                ", allergyInformation='" + allergyInformation + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", password='" + password + '\'' +
-                ", foods=" + foods +
-                '}';
     }
 }

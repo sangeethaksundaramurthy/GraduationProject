@@ -51,6 +51,5 @@ public class TakerController
             model.addAttribute("taker", taker);
             return "takerSignedIn";
         }
-
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be aHand - Donation History</title>
+
+</head>
+
+<body >
+<table>
+    <tr>
+        <th>Donation Date</th>
+        <th>Food Name</th>
+        <th>Quantity</th>
+        <th>Self Pick-up</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="food : ${foods}">
+        <td th:text="${food.createdDate}"></td>
+        <td th:text="${food.name}"></td>
+        <td th:text="${food.quantity}"></td>
+        <td th:if="${food.pickUpRequired == true}"> No </td> <td th:if="${food.pickUpRequired == false}"> Yes </td>
+        <td th:text="${food.status}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
