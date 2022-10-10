@@ -12,33 +12,26 @@ public class Donor
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
     private int id;
 
     @Size(min = 3, max = 30)
-    @Column(name = "Name")
     private String name;
 
-    @Size(min=10, max=50)
-    @Column(name = "Address")
+    @Size(min = 10, max = 50)
     private String address;
 
     @NotNull
-    @Range(min= 10000, max = 999999)
-    @Column(name = "PostalCode")
+    @Range(min = 10000, max = 999999)
     private Integer postalCode;
 
     @Size(min = 10, max = 13)
-    @Column(name = "Phone")
     private String phone;
 
     @Email
     @NotBlank
-    @Column(name = "EmailId",  unique = true)
     private String emailId;
 
     @NotBlank
-    @Column(name = "Password")
     private String password;
 
     @OneToMany(mappedBy = "donor", cascade = CascadeType.ALL)
@@ -46,15 +39,6 @@ public class Donor
 
     public Donor()
     {
-    }
-
-    public Donor(String name, String address, Integer postalCode, String phone, String emailId, String password) {
-        this.name = name;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.emailId = emailId;
-        this.password = password;
     }
 
     public int getId()
@@ -82,11 +66,13 @@ public class Donor
         this.address = address;
     }
 
-    public Integer getPostalCode() {
+    public Integer getPostalCode()
+    {
         return postalCode;
     }
 
-    public void setPostalCode(Integer postalCode) {
+    public void setPostalCode(Integer postalCode)
+    {
         this.postalCode = postalCode;
     }
 
@@ -130,16 +116,4 @@ public class Donor
         this.foods = foods;
     }
 
-    @Override
-    public String toString() {
-        return "Donor{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", postalCode=" + postalCode +
-                ", phone='" + phone + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", password='" + password + '\'' +
-                ", foods=" + foods +
-                '}';
-    }
 }

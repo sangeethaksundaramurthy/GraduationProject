@@ -21,7 +21,7 @@ public class Food
     private int id;
     @Size(min = 3, max = 30)
     private String name;
-    @Size(min=10, max=50)
+    @Size(min = 10, max = 50)
     private String address;
     @NotNull
     private String category;
@@ -30,8 +30,8 @@ public class Food
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate bestBefore;
     @NotNull
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private String pickUpTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime pickUpDateAndTime;
     @Size(min = 1, max = 100)
     @Positive
     private String quantity;
@@ -39,7 +39,6 @@ public class Food
 
     @Size(min = 3, max = 100)
     private String allergyInformation;
-
 
     private String image;
 
@@ -54,21 +53,8 @@ public class Food
 
     public Food()
     {
-        this.status= FoodStatus.AVAILABLE;
+        this.status = FoodStatus.AVAILABLE;
     }
-
-/*    public Food(String name, String address, String category, LocalDate bestBefore, LocalTime pickUpTime, String quantity, String status, String allergyInformation, String image)
-    {
-        this.name = name;
-        this.address = address;
-        this.category = category;
-        this.bestBefore = bestBefore;
-        this.pickUpTime = pickUpTime;
-        this.quantity = quantity;
-        this.status = ;
-        this.allergyInformation = allergyInformation;
-        this.image = image;
-    }*/
 
     public int getId()
     {
@@ -115,14 +101,14 @@ public class Food
         this.bestBefore = bestBefore;
     }
 
-    public String getPickUpTime()
+    public LocalDateTime getPickUpDateAndTime()
     {
-        return pickUpTime;
+        return pickUpDateAndTime;
     }
 
-    public void setPickUpTime(String pickUpTime)
+    public void setPickUpDateAndTime(LocalDateTime pickUpDateAndTime)
     {
-        this.pickUpTime = pickUpTime;
+        this.pickUpDateAndTime = pickUpDateAndTime;
     }
 
     public String getQuantity()
@@ -195,8 +181,4 @@ public class Food
         this.volunteer = volunteer;
     }
 
-    @Override public String toString()
-    {
-        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", bestBefore=" + bestBefore + ", pickUpTime=" + pickUpTime + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
-    }
 }

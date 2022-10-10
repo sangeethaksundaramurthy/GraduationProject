@@ -60,8 +60,8 @@
 
 
     <label><b>Time for pick-up</b></label>
-    <input type="datetime-local" id="appt" name="appt" min="09:00" max="18:00" required th:field="*{pickUpTime}"/>
-    <label th:if="${#fields.hasErrors('pickUpTime')}">Incorrect value in the input!</label><br/>
+    <input type="datetime-local" id="appt" name="appt" min="09:00" max="18:00" required th:field="*{pickUpDateAndTime}"/>
+    <label th:if="${#fields.hasErrors('pickUpDateAndTime')}">Incorrect value in the input!</label><br/>
 
 
     <!-- Supply -->

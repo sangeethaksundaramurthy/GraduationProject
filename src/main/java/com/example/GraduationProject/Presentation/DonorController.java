@@ -3,7 +3,6 @@ package com.example.GraduationProject.Presentation;
 import com.example.GraduationProject.Business.DonorService;
 import com.example.GraduationProject.Business.Entity.Donor;
 import com.example.GraduationProject.Business.Entity.Food;
-import com.example.GraduationProject.Business.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,9 +21,6 @@ public class DonorController
 
     @Autowired
     DonorService donorService;
-
-    @Autowired
-    FoodService foodService;
 
     @GetMapping("donor")
     public ModelAndView donor()
@@ -91,10 +87,18 @@ public class DonorController
         }
         else
         {
-            foodService.save(food);
+            donorService.save(food);
             //mav.addObject()
-            mav.setViewName("donorSignedIn");
+            mav.setViewName("delivery");
         }
+        return mav;
+    }
+
+    @GetMapping(value = "/donorSignedIn", params = "submit")
+    public ModelAndView donorSignedIn()
+    {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("donorSignedIn");
         return mav;
     }
 }

@@ -14,38 +14,31 @@ public class Volunteer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
     private int id;
 
     @Size(min=3, max=30)
-    @Column(name = "Name")
     private String name;
 
     @Size(min=10, max=50)
-    @Column(name = "Address")
     private String address;
 
     @NotNull
     @Range(min= 10000, max = 999999)
-    @Column(name = "PostalCode")
     private Integer postalCode;
 
     @Size(min=10, max=13)
-    @Column(name = "Phone")
     private String phone;
 
     @PastOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Column(name = "DateOfBirth")
     private Date dateOfBirth;
 
     @Email
     @NotBlank
-    @Column(name = "EmailId",  unique = true)
+    @Column(unique = true)
     private String emailId;
 
     @NotBlank
-    @Column(name= "Password")
     private String password;
 
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
