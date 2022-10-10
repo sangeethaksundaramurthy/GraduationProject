@@ -1,0 +1,244 @@
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    }
+  body {
+    top: 0px !important;
+    }
+
+    .goog-logo-link{
+
+      display:none !important;
+
+      }
+
+      .goog-te-gadget{
+
+    color:transparent!important;
+
+    }
+
+    #google_translate_element select{
+      font-family: ubuntu;
+      border: none;
+      border-radius:3px;
+      padding:6px 8px;
+      font-size: larger;
+    }
+
+  .name {
+    display: block;
+    color: white;
+    text-align: left;
+    padding: 27px 30px;
+    text-decoration: none;
+    font-size: xx-large;
+    font-family: ubuntu;
+    color: #ffb606;
+    font-weight: bolder;
+  }
+
+  .logo {
+    color: #ffb606;
+  }
+
+  .main {
+    content: "";
+    height: 550px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
+  }
+
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+  }
+
+  .navbar li {
+    float: right;
+
+  }
+
+  .link{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 35px 50px;
+    text-decoration: none;
+    font-size: larger;
+    font-family: ubuntu;
+  }
+
+  .translate{
+    padding: 20px 30px;
+     margin-top: 10px;
+  }
+  /* .navbar li  {
+    display: block;
+    color: white;
+    text-align: center;
+
+    text-decoration: none;
+    font-size: larger;
+    font-family: ubuntu;
+  } */
+
+  /* .food {
+    text-align: center;
+    font-size: 35px;
+    font-family: ubuntu;
+    font-weight: bolder;
+    margin-bottom: 10px;
+  } */
+
+  .navbar li a:hover {
+    background-color: #111;
+  }
+
+  .navbar-logo {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-top: 23px;
+    margin-left: 8px;
+    margin-right: 5px;
+  }
+
+  body{
+    background-color:  #FAFAFC;
+  }
+
+
+.selfBtn {
+    background-color: #ffb606;
+    opacity: 0.8;
+    cursor: pointer;
+    font-weight: bolder;
+    color: white;
+    /* cursor: not-allowed; */
+  }
+
+
+  .pickupBtn {
+    background-color: #ffb606;
+    opacity: 0.8;
+    cursor: pointer;
+    font-weight: bolder;
+    color: white;
+  }
+
+
+
+  .delivery {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 44px;
+  }
+
+  .delivery p {
+    margin-top: 15px;
+    text-align: center;
+    font-family: ubuntu;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .img img {
+    border-radius: 0px;
+    align-items: center;
+    margin-top: 60px;
+    width: 500px;
+    height: 300px;
+  }
+
+  .button_section {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button_section > button {
+    height: 42px;
+    width: 156px;
+    border-radius: 5px;
+    padding: 0px 32px;
+    border: 1px solid #ffb606;
+  }
+
+  .popup{
+    width: 400px;
+    height: 260px;
+    background: #fff0cd;
+    border-radius: 5px;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+  }
+
+  .open-popup{
+    visibility: visible;
+    top: 55%;
+transform: translate(-50%, -50%) scale(1);
+  }
+
+  .popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+  }
+
+  .popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #ffb606 ;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  .icon {
+    font-size: 48px;
+    fill: #ffb606;
+  }
+
+  .modal_container > p {
+    margin: 0;
+  }

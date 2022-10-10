@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -10,7 +9,7 @@
 
     <!-- Favicon, CSS & JS -->
 
-    <link rel="stylesheet" href="style/donorSignedIn.css" />
+    <link rel="stylesheet" href="style/delivery.css" />
     <link
             rel="stylesheet"
             type="text/css"
@@ -26,6 +25,7 @@
     <!-- Font Awesome icons CDN -->
     <script src="https://use.fontawesome.com/4e51920be5.js"></script>
 </head>
+
 <body>
 <!-- Navbar -->
 <div id="navbar" class="navbar">
@@ -73,44 +73,67 @@
         <div class="name">Be aHand</div>
     </ul>
 </div>
-<form th:action="@{/donateFood}" method="GET" th:object="${donor}">
 
-    <div class= "donor">
-        <h1>Profile</h1>
-        <div class="upper">
-
-            <div class="title">
-                <h2>Hello  <label th:text ="*{emailId}"></label>! </h2>
-
-            </div>
+<div class="delivery">
+    <div class="upper">
+        <div class="img">
+            <img src="./images/delivery.png" alt="Illustration" />
         </div>
-        <div class="lower">
-            <div class="tabs">
-                <i class="uil uil-history"></i>
-                <a href="history">Donation History</a>
-            </div>
-
-            <div class="tabs">
-                <i class="uil uil-calender"></i>
-                <a href="/donateFood">Schedule Donation</a>
-            </div>
-
-            <div class="tabs">
-                <i class="uil uil-question-circle"></i>
-                <a href="help">Help and FAQs</a>
-            </div>
-
-        </div>
-
-        <div>
-            <button onClick={logout} class="signup_btn">
-                Logout
-            </button>
-        </div>
+        <p>Would you be delivering or do you need a Pickup?</p>
     </div>
 
-</form>
+    <div class="button_section">
+        <button class="selfBtn" onClick="openPopupSelf()">Self Delivery</button>
+        <div class="popup" id="popupself">
+            <img src="images/tick.png">
+            <h2>Thank You!</h2>
+            <p>Your donation means alot!!</p>
+            <button type="button" onclick="closePopupSelf()">OK</button>
+        </div>
+        <!-- <button onClick={toggleModal} class="pickupBtn"> -->
+        <button class="pickupBtn" onclick="openPopupPick()">
+            Pick-Up
+        </button>
+        <div class="popup" id="popuppick">
+            <img src="images/tick.png">
+            <h2>Thank You!</h2>
+            <p>Pickup Request service sent succesfully !!</p>
+            <button type="button" onclick="closePopupPick()">OK</button>
+        </div>
+    </div>
+    <!-- {isModalOpen ? (
+      <div class="modal_overlay">
+        <div class="modal_container">
+          <IoIosCheckmarkCircle class="icon" />
+          <p>Pickup Request service sent succesfully !!</p>
+          <p>You will notified soon</p>
+          <Button text="Okay" link="/" />
+        </div>
+      </div> -->
+</div>
+
+<script>
+        let popuppick = document.getElementById("popuppick");
+        let popupself = document.getElementById("popupself")
+
+        function openPopupPick(){
+            popuppick.classList.add("open-popup");
+        }
+
+        function closePopupPick(){
+            popuppick.classList.remove("open-popup");
+        }
+
+        function openPopupSelf(){
+            popupself.classList.add("open-popup");
+            popupself.classList.add("selfBtnClick");
+        }
+
+        function closePopupSelf(){
+            popupself.classList.remove("open-popup");
+        }
 
 
+      </script>
 </body>
 </html>
