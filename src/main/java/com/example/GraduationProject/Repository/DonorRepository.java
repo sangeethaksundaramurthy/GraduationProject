@@ -9,4 +9,6 @@ import java.util.List;
 public interface DonorRepository extends JpaRepository<Donor, Integer>
 {
     List<Donor> findByEmailIdAndPassword(String emailId, String password);
+
+    List<Donor> findByEmailId(String emailId);
 }

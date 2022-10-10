@@ -16,9 +16,16 @@ public class DonorService
     DonorRepository repository;
 
     Donor donor;
-    public void save(Donor donor)
+    public String save(Donor donor)
     {
-        repository.save(donor);
+        List<Donor> donors = repository.findByEmailId(donor.getEmailId());
+        if(donors.isEmpty())
+        {
+            repository.save(donor);
+            return "Success";
+        }
+        else
+            return "Failed";
     }
 
     public Donor authenticate(String emailId, String password)

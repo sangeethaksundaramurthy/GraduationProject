@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 public class DonorController
@@ -37,13 +38,16 @@ public class DonorController
         ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
         {
-            mav.addObject("id",1);
-            mav.setViewName("redirect:/donor/{id}");
+            mav.setViewName("redirect:/donor");
         }
         else
         {
-            service.save(donor);
-            mav.setViewName("home");
+            if(Objects.equals(service.save(donor), "Success"))
+                mav.setViewName("home");
+            else
+            {
+                mav.setViewName("redirect:/donor");
+            }
         }
         return mav;
     }
