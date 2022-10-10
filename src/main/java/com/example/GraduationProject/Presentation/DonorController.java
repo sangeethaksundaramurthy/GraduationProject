@@ -3,9 +3,9 @@ package com.example.GraduationProject.Presentation;
 import com.example.GraduationProject.Business.DonorService;
 import com.example.GraduationProject.Business.Entity.Donor;
 import com.example.GraduationProject.Business.Entity.Food;
+import com.example.GraduationProject.Business.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +21,10 @@ public class DonorController
 {
 
     @Autowired
-    DonorService service;
+    DonorService donorService;
+
+    @Autowired
+    FoodService foodService;
 
     @GetMapping("donor")
     public ModelAndView donor()
@@ -42,8 +45,8 @@ public class DonorController
         }
         else
         {
-            if(Objects.equals(service.save(donor), "Success"))
-                mav.setViewName("home");
+            if(Objects.equals(donorService.save(donor), "Success"))
+                mav.setViewName("donorSignedIn");
             else
             {
                 mav.setViewName("redirect:/donor");
@@ -55,7 +58,7 @@ public class DonorController
     public ModelAndView signInDonor(@RequestParam String emailId, @RequestParam String password)
     {
         ModelAndView mav = new ModelAndView();
-        Donor donor = service.authenticate(emailId,password);
+        Donor donor = donorService.authenticate(emailId,password);
         if(donor == null)
         {
             mav.setViewName("redirect:/donor");
@@ -77,11 +80,21 @@ public class DonorController
         return mav;
     }
 
-    @GetMapping(value = "/donateFood", params = "recentDonations")
-    public ModelAndView donateFood_recentDonations()
+    @PostMapping(value = "/donateFood", params = "submitDonation")
+    public ModelAndView donateFood_recentDonations(@Valid @ModelAttribute Food food, BindingResult bindingresult)
     {
         ModelAndView mav = new ModelAndView();
-
+        if(bindingresult.hasErrors())
+        {
+            System.out.println(bindingresult.toString());
+            mav.setViewName("redirect:/donateFood");
+        }
+        else
+        {
+            foodService.save(food);
+            //mav.addObject()
+            mav.setViewName("donorSignedIn");
+        }
         return mav;
     }
 }

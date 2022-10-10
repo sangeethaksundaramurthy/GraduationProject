@@ -1,13 +1,16 @@
 package com.example.GraduationProject.Business.Entity;
 
+import com.example.GraduationProject.Business.FoodStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Food")
@@ -15,46 +18,29 @@ public class Food
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
     private int id;
-
     @Size(min = 3, max = 30)
-    @Column(name = "Name")
     private String name;
-
-
     @Size(min=10, max=50)
-    @Column(name = "Address")
     private String address;
-
     @NotNull
-    @Column(name = "Category")
     private String category;
-
     @NotNull
     @FutureOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Column(name = "ExpiryDate")
-    private Date expiryDate;
-
+    private LocalDate bestBefore;
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @Column(name = "Time")
-    private Time time;
-
+    private String pickUpTime;
     @Size(min = 1, max = 100)
-    @Column(name = "Quantity")
+    @Positive
     private String quantity;
-
-    @NotNull
-    @Column(name = "Status")
-    private String status;
+    private FoodStatus status;
 
     @Size(min = 3, max = 100)
-    @Column(name = "AllergyInformation")
     private String allergyInformation;
 
-    @Column(name = "Image")
+
     private String image;
 
     @ManyToOne
@@ -68,20 +54,21 @@ public class Food
 
     public Food()
     {
+        this.status= FoodStatus.AVAILABLE;
     }
 
-    public Food(String name, String address, String category, Date expiryDate, Time time, String quantity, String status, String allergyInformation, String image)
+/*    public Food(String name, String address, String category, LocalDate bestBefore, LocalTime pickUpTime, String quantity, String status, String allergyInformation, String image)
     {
         this.name = name;
         this.address = address;
         this.category = category;
-        this.expiryDate = expiryDate;
-        this.time = time;
+        this.bestBefore = bestBefore;
+        this.pickUpTime = pickUpTime;
         this.quantity = quantity;
-        this.status = status;
+        this.status = ;
         this.allergyInformation = allergyInformation;
         this.image = image;
-    }
+    }*/
 
     public int getId()
     {
@@ -118,24 +105,24 @@ public class Food
         this.category = category;
     }
 
-    public Date getExpiryDate()
+    public LocalDate getBestBefore()
     {
-        return expiryDate;
+        return bestBefore;
     }
 
-    public void setExpiryDate(Date expiryDate)
+    public void setBestBefore(LocalDate bestBefore)
     {
-        this.expiryDate = expiryDate;
+        this.bestBefore = bestBefore;
     }
 
-    public Time getTime()
+    public String getPickUpTime()
     {
-        return time;
+        return pickUpTime;
     }
 
-    public void setTime(Time time)
+    public void setPickUpTime(String pickUpTime)
     {
-        this.time = time;
+        this.pickUpTime = pickUpTime;
     }
 
     public String getQuantity()
@@ -148,12 +135,12 @@ public class Food
         this.quantity = quantity;
     }
 
-    public String getStatus()
+    public FoodStatus getStatus()
     {
         return status;
     }
 
-    public void setStatus(String status)
+    public void setStatus(FoodStatus status)
     {
         this.status = status;
     }
@@ -210,6 +197,6 @@ public class Food
 
     @Override public String toString()
     {
-        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", expiryDate=" + expiryDate + ", time=" + time + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
+        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", bestBefore=" + bestBefore + ", pickUpTime=" + pickUpTime + ", quantity='" + quantity + '\'' + ", status='" + status + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
     }
 }
