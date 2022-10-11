@@ -27,6 +27,7 @@
 
 
 
+
   .name {
     display: block;
     color: white;
@@ -121,17 +122,36 @@
     margin-right: 5px;
   }
 
+.imp{
+margin-top: 130px;
+margin-bottom: 30px;
+}
 
-.donor h1 {
-    font-weight: 600;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0.0015em;
-    padding-top: 20px;
-    margin-bottom: 20px;
-  }
+.history {
+    list-style-type: none;
+    margin-left: 365px;
+    padding: 0;
+    overflow: hidden;
+    font-family: ubuntu;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 500px;
+    border: 5px solid #ffb606;
+    padding: 20px;
+}
 
-  .signup_btn {
+.description{
+    line-height: 40px;
+}
+
+
+body{
+    background-color: #fff0cd;
+}
+
+.signup_btn {
     height: 48px;
     width: 368px;
     border-radius: 10px;
@@ -144,77 +164,7 @@
     letter-spacing: 0.0015em;
     color: white;
     font-size: 16px;
-    margin-top: 28px;
-  }
-
-  .donor {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    font-family: ubuntu;
-  }
-
-  .donor h2 {
-    font-size: 25px;
-    line-height: 27px;
-    letter-spacing: 0.0015em;
-    color: #ffb606;
     margin-top: 20px;
-  }
-
-  .edit {
-    border: 1px solid #ffb606;
-    border-radius: 2px;
-    height: 26px;
-    width: 98px;
-    border-radius: 2px;
-    padding: 8px, 38px, 8px, 38px;
-    color: #ffb606;
-    margin: auto;
-    margin-top: 20px;
-  }
-
-  body{
-    background-color: #fff0cd;
-  }
-
-
-  /* .plus {
-    color: aliceblue;
-    text-align: center;
-    font-size: 40px;
-    padding-top: 27px;
-  } */
-
-  .tabs {
-    display: flex;
-    gap: 10px;
-    /* margin-top: 20px; */
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    margin-left: 39%;
-  }
-
-  i{
-    font-size: 27px;
-    font-weight: bold;
-  }
-
-  .make{
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 20px 40px;
-    text-decoration: none;
-    font-size: larger;
-    font-family: ubuntu;
-  }
-
-  .lower {
-    padding: 30px;
+    margin-left: 460px;
+    margin-bottom: 20px;
   }
