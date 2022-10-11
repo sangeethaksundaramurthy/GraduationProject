@@ -72,6 +72,7 @@
     </ul>
 </div>
 <div class="imp">
+    <h2>Donation History</h2>
 <ul class="history" th:each="food : ${foods}">
     <li class="description">
         Donation Date:
@@ -92,9 +93,11 @@
 </ul>
 
     <div>
-        <button onClick={logout} class="signup_btn" type="submit" name="logout">
+        <form action="/donorSIH" method="get">
+        <button class="signup_btn" type="submit" name="logout">
             Ok
         </button>
+        </form>
     </div>
 
 </div>

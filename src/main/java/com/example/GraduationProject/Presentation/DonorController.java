@@ -111,4 +111,12 @@ public class DonorController
         mav.setViewName("donationHistory");
         return mav;
     }
+
+    @GetMapping("/donorSIH")
+    public ModelAndView donorSIH(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("donor", service.getDonor());
+        mav.setViewName("donorSignedIn");
+        return mav;
+    }
 }
