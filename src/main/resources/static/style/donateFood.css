@@ -1,8 +1,50 @@
 /* Make Donation button */
 
-    body { background: #fff0cd !important;
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    }
+
+
+    .goog-logo-link{
+
+      display:none !important;
+
+      }
+
+      .goog-te-gadget{
+
+    color:transparent!important;
+
+    }
+
+    #google_translate_element select{
+      font-family: ubuntu;
+      border: none;
+      border-radius:3px;
+      padding:6px 8px;
+      font-size: larger;
+      color: black;
+    }
+
+
+
+
+  .translate{
+    padding: 5px 30px !important;
+
+  }
+
+  .first{
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  body { background: #fff0cd !important;
     margin: 10px !important;
-    font-family: "Poppins", sans-serif !important; }
+    font-family: "Poppins", sans-serif !important;
+    top: 0px !important;
+}
 
 .form-container {
     margin: auto;
@@ -14,6 +56,7 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+
 }
 
 .form-container h2 {
@@ -67,4 +110,3 @@
 .form-container .cancel {
     background-color: lightslategray;
 }
-

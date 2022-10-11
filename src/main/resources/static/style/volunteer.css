@@ -1,13 +1,61 @@
-.name {
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    }
+  body {
+    top: 0px !important;
+    }
+
+    .goog-logo-link{
+
+      display:none !important;
+
+      }
+
+      .goog-te-gadget{
+
+    color:transparent!important;
+
+    }
+
+    #google_translate_element select{
+      font-family: ubuntu;
+      border: none;
+      border-radius:3px;
+      padding:6px 8px;
+      font-size: larger;
+    }
+
+
+
+
+  .name {
     display: block;
     color: white;
     text-align: left;
-    padding: 22px 30px;
+    padding: 27px 30px;
     text-decoration: none;
     font-size: xx-large;
-    font-family: sans-serif;
+    font-family: ubuntu;
     color: #ffb606;
     font-weight: bolder;
+  }
+
+  .logo {
+    color: #ffb606;
+  }
+
+  .main {
+    content: "";
+    height: 550px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
   }
 
   .navbar ul {
@@ -21,29 +69,45 @@
     top: 0;
     left: 0;
     z-index: 1;
+
   }
 
   .navbar li {
     float: right;
+
   }
 
-  .navbar li a {
+  .link{
     display: block;
     color: white;
     text-align: center;
-    padding: 30px 30px;
+    padding: 35px 50px;
     text-decoration: none;
     font-size: larger;
     font-family: ubuntu;
   }
 
-  .food {
+  .translate{
+    padding: 20px 30px;
+     margin-top: 10px;
+  }
+  /* .navbar li  {
+    display: block;
+    color: white;
+    text-align: center;
+
+    text-decoration: none;
+    font-size: larger;
+    font-family: ubuntu;
+  } */
+
+  /* .food {
     text-align: center;
     font-size: 35px;
     font-family: ubuntu;
     font-weight: bolder;
     margin-bottom: 10px;
-  }
+  } */
 
   .navbar li a:hover {
     background-color: #111;
@@ -53,8 +117,8 @@
     height: 50px;
     width: 50px;
     float: left;
-    margin-top: 15px;
-    margin-left: 5px;
+    margin-top: 23px;
+    margin-left: 8px;
     margin-right: 5px;
   }
 

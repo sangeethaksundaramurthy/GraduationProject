@@ -25,6 +25,8 @@
       font-size: larger;
     }
 
+
+
   .name {
     display: block;
     color: white;
@@ -174,7 +176,7 @@
   }
 
   body{
-    background-color: #FAFAFC;
+    background-color: #fff0cd;
   }
 
 
