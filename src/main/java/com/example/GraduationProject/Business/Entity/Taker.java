@@ -120,4 +120,9 @@ public class Taker
     {
         this.foods = foods;
     }
+
+    @Override public String toString()
+    {
+        return "Taker{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", postalCode=" + postalCode + ", phone='" + phone + '\'' + ", allergyInformation='" + allergyInformation + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foods=" + foods + '}';
+    }
 }

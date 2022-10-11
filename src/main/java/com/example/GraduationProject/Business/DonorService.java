@@ -71,7 +71,6 @@ public class DonorService
 
     public List<Food> donationHistory()
     {
-        List<Food> foods = foodRepository.findAllByDonorId(donor.getId());
-        return foods;
+        return foodRepository.findAllByDonorId(donor.getId());
     }
 }

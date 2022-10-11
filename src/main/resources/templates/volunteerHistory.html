@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be aHand - Donation Availability</title>
+</head>
+
+<body >
+<body >
+<table>
+    <tr>
+        <th>Food Name</th>
+        <th>Pick-up address</th>
+        <th>Food Category</th>
+        <th>Pick-up Date & Time</th>
+        <th>Best before date</th>
+        <th>Quantity</th>
+        <th>Special Instructions</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="food : ${foods}">
+        <td th:text="${food.name}"></td>
+        <td th:text="${food.address}"></td>
+        <td th:text="${food.category}"></td>
+        <td th:text="${food.pickUpDateAndTime}"></td>
+        <td th:text="${food.bestBefore}"></td>
+        <td th:text="${food.quantity}"></td>
+        <td th:text="${food.allergyInformation}"></td>
+        <td th:text="${food.status}"></td>
+
+            <a th:if="${food.status != DELIVERED}" th:href="'/delivered/' + ${food.id}" > Delivered?
+            </a>
+
+    </tr>
+</table>
+
+</body>
+</html>

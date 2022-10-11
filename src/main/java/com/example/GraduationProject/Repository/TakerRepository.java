@@ -8,4 +8,6 @@ import java.util.List;
 public interface TakerRepository extends JpaRepository<Taker, Integer>
 {
    List<Taker> findByEmailIdAndPassword(String emailId, String password);
+
+    List<Taker> findByEmailId(String emailId);
 }

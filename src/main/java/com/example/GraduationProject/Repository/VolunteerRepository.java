@@ -9,4 +9,6 @@ import java.util.List;
 public interface VolunteerRepository extends JpaRepository<Volunteer, Integer>
 {
     List<Volunteer> findByEmailIdAndPassword(String emailId, String password);
+
+    List<Volunteer> findByEmailId(String emailId);
 }

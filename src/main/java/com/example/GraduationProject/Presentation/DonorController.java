@@ -29,7 +29,7 @@ public class DonorController
     }
 
     @PostMapping("/addDonor")
-    public ModelAndView addNewDonor(@Valid @ModelAttribute Donor donor, BindingResult bindingresult)
+    public ModelAndView addDonor(@Valid @ModelAttribute Donor donor, BindingResult bindingresult)
     {
         ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
@@ -49,7 +49,7 @@ public class DonorController
         return mav;
     }
     @PostMapping("/DonorSI")
-    public ModelAndView signInDonor(@RequestParam String emailId, @RequestParam String password)
+    public ModelAndView DonorSI(@RequestParam String emailId, @RequestParam String password)
     {
         ModelAndView mav = new ModelAndView();
         Donor donor = service.authenticate(emailId,password);
@@ -66,7 +66,7 @@ public class DonorController
     }
 
     @RequestMapping("/food")
-    public ModelAndView food_donate()
+    public ModelAndView food()
     {
         ModelAndView mav = new ModelAndView();
         mav.addObject("food", new Food());
@@ -75,7 +75,7 @@ public class DonorController
     }
 
     @PostMapping(value = "/food", params = "submit")
-    public ModelAndView donateFood_recentDonations(@Valid @ModelAttribute Food food, BindingResult bindingresult)
+    public ModelAndView food_submit(@Valid @ModelAttribute Food food, BindingResult bindingresult)
     {
         ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
@@ -99,16 +99,21 @@ public class DonorController
         mav.setViewName("donorSignedIn");
         return mav;
     }
-
-
-
-    @RequestMapping("/history")
+    @RequestMapping("/historyD")
     public ModelAndView history()
     {
         ModelAndView mav = new ModelAndView();
         List<Food> foods = service.donationHistory();
         mav.addObject("foods",foods);
-        mav.setViewName("donationHistory");
+        mav.setViewName("donorHistory");
+        return mav;
+    }
+
+    @GetMapping("/donorSIH")
+    public ModelAndView donorSIH(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("donor", service.getDonor());
+        mav.setViewName("donorSignedIn");
         return mav;
     }
 }

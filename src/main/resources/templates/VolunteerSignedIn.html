@@ -31,49 +31,48 @@
 <div id="navbar" class="navbar">
     <ul>
         <li>
-            <!-- <a href="contact.html" id="Contact-button">Contact</a> -->
 
 
             <div class="translate" id="google_translate_element"></div>
 
             <script>
 
-            function googleTranslateElementInit() {
+             function googleTranslateElementInit() {
 
-            new google.translate.TranslateElement({
+             new google.translate.TranslateElement({
 
-            pageLanguage: 'en',
+             pageLanguage: 'en',
 
-            autoDisplay: 'true',
+             autoDisplay: 'true',
 
-            includedLanguages:'sv,en,ar',
+             includedLanguages:'sv,en,uk',
 
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+             layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
 
-            }, 'google_translate_element');
+             }, 'google_translate_element');
 
-            }
+             }
 
-            </script>
+             </script>
 
             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
         </li>
         <li>
-            <a class="link" href="donateForm.html" id="BeaHand-button">Be aHand</a>
+            <a class="link" href="/" id="BeaHand-button">Home</a>
         </li>
         <li>
-            <a class="link" href="takeForm.html" id="TakeaHand-button">Take aHand</a>
+            <a class="link" href="/taker" id="TakeaHand-button">Take aHand</a>
         </li>
         <li>
-            <a class="link" href="#Volunteer" id="volunteer-button">Be aVolunteer</a>
+            <a class="link" href="/volunteer" id="volunteer-button">Be aVolunteer</a>
         </li>
         <img src="images/BeaHand.png" class="navbar-logo" />
         <div class="name">Be aHand</div>
     </ul>
 </div>
-<form th:action="@{/taker}" method="GET" th:object="${taker}">
+<form th:action="@{/volunteer}" method="GET" th:object="${volunteer}">
 
     <div class= "donor">
         <h1>Profile</h1>
@@ -87,17 +86,17 @@
         <div class="lower">
             <div class="tabs">
                 <i class="uil uil-history"></i>
-                <a href="/historyT">Takers History</a>
+                <a class="make" href="/historyV">Volunteer History</a>
             </div>
 
             <div class="tabs">
                 <i class="uil uil-calender"></i>
-                <a href="/viewD">View Donations</a>
+                <a class="make" href="/pickup">Schedule Pick-Ups</a>
             </div>
 
             <div class="tabs">
                 <i class="uil uil-question-circle"></i>
-                <a href="help">Help and FAQs</a>
+                <a class="make" href="help">Help and FAQs</a>
             </div>
 
         </div>

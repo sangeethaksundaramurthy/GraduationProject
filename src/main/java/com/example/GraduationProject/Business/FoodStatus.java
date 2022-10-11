@@ -4,7 +4,6 @@ public enum FoodStatus
 {
     AVAILABLE,
     ACCEPTED,
-    READYFORPICKUP,
-    PICKEDUP,
+    PICK_UP,
     DELIVERED
 }

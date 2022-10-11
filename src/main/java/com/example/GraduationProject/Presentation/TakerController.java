@@ -1,17 +1,18 @@
 package com.example.GraduationProject.Presentation;
 
+import com.example.GraduationProject.Business.Entity.Food;
 import com.example.GraduationProject.Business.Entity.Taker;
 import com.example.GraduationProject.Business.TakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class TakerController
@@ -26,30 +27,67 @@ public class TakerController
         return "taker";
     }
 
-    @PostMapping("/addNewTaker")
-    public String takerPost(@Valid @ModelAttribute Taker taker, BindingResult bindingresult, Model model)
+    @PostMapping("/addTaker")
+    public ModelAndView takerPost(@Valid @ModelAttribute Taker taker, BindingResult bindingresult)
     {
+        ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
-            return "/taker";
+            mav.setViewName("taker");
         else
         {
-            service.save(taker);
-            return "home";
+            if(Objects.equals(service.save(taker), "Success"))
+                mav.setViewName("takerSignedIn");
+            else
+            {
+                System.out.println("EmailId already exists:-(");
+                mav.setViewName("redirect:/taker");
+            }
         }
+        return mav;
     }
-    @PostMapping("/signInTaker")
-    public String signInTaker(@RequestParam String emailId, @RequestParam String password, Model model)
+    @PostMapping("/TakerSI")
+    public ModelAndView signInTaker(@RequestParam String emailId, @RequestParam String password)
     {
+        ModelAndView mav = new ModelAndView();
         Taker taker = service.authenticate(emailId,password);
         if(taker == null)
         {
-            System.out.println("redirect");
-            return "redirect:/taker";
+            mav.setViewName("redirect:/taker");
         }
         else
         {
-            model.addAttribute("taker", taker);
-            return "takerSignedIn";
+            mav.addObject("taker", taker);
+            mav.setViewName("takerSignedIn");
         }
+        return mav;
+    }
+
+    @RequestMapping("/viewD")
+    public ModelAndView viewDonations()
+    {
+        ModelAndView mav = new ModelAndView();
+        List<Food> foods = service.viewDonations();
+        mav.addObject("foods", foods);
+        mav.setViewName("viewDonations");
+        return mav;
+    }
+
+    @GetMapping("/accept/{id}")
+    public ModelAndView acceptFood(@PathVariable Integer id)
+    {
+        ModelAndView mav = new ModelAndView();
+        service.acceptFood(id);
+        mav.setViewName("redirect:/viewD");
+        return mav;
+    }
+
+    @RequestMapping("/historyT")
+    public ModelAndView history()
+    {
+        ModelAndView mav = new ModelAndView();
+        List<Food> foods = service.takerHistory();
+        mav.addObject("foods",foods);
+        mav.setViewName("takerHistory");
+        return mav;
     }
 }

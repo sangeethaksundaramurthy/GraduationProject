@@ -83,7 +83,7 @@
             </div>
             <span class="title">Login</span>
 
-            <form action="signInVolunteer" method="POST">
+            <form action="volunteerSI" method="POST">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your email" name = "emailId" required />
                     <i class="uil uil-envelope icon"></i>
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="input-field button">
-                    <input type="button" value="Login" />
+                    <input type="submit" value="Login" />
                 </div>
             </form>
         </div>
@@ -125,7 +125,7 @@
             </div>
             <span class="title">Registration</span>
 
-            <form th:action="@{/volunteer}" method="POST" th:object="${volunteer}">
+            <form th:action="@{/addVolunteer}" method="POST" th:object="${volunteer}">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your name" required
                            th:field="*{name}"/>

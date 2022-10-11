@@ -11,14 +11,14 @@
 
     <link rel="stylesheet" href="style/donationHistory.css" />
     <link
-            rel="stylesheet"
-            type="text/css"
-            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+        rel="stylesheet"
+        type="text/css"
+        href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
     />
     <script src="js/client.js" defer></script>
     <link
-            rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+        rel="stylesheet"
+        href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
 
     <!-- Font Awesome icons CDN -->
@@ -72,29 +72,32 @@
     </ul>
 </div>
 <div class="imp">
-<ul class="history" th:each="food : ${foods}">
-    <li class="description">
-        Donation Date:
-        <label th:text="${food.createdDate}"> </label>
-    </li>
-    <li class="description"> Food Name:
-        <label th:text="${food.name}"></label>
+    <h2>Donation History</h2>
+    <ul class="history" th:each="food : ${foods}">
+        <li class="description">
+            Donation Date:
+            <label th:text="${food.createdDate}"> </label>
         </li>
-    <li class="description"> Quantity:
-        <label th:text="${food.quantity}"></label>
-    </li>
-    <li class="description"> Delivery:
-        <label th:if="${food.pickUpRequired == true}"> PickUp </label> <label th:if="${food.pickUpRequired == false}"> Self Delivery </label>
-    </li>
-    <li class="description"> Status:
-        <label th:text="${food.status}"></label>
-    </li>
-</ul>
+        <li class="description"> Food Name:
+            <label th:text="${food.name}"></label>
+        </li>
+        <li class="description"> Quantity:
+            <label th:text="${food.quantity}"></label>
+        </li>
+        <li class="description"> Delivery:
+            <label th:if="${food.pickUpRequired == true}"> PickUp </label> <label th:if="${food.pickUpRequired == false}"> Self Delivery </label>
+        </li>
+        <li class="description"> Status:
+            <label th:text="${food.status}"></label>
+        </li>
+    </ul>
 
     <div>
-        <button onClick={logout} class="signup_btn" type="submit" name="logout">
-            Ok
-        </button>
+        <form action="/donorSIH" method="get">
+            <button class="signup_btn" type="submit" name="logout">
+                Ok
+            </button>
+        </form>
     </div>
 
 </div>

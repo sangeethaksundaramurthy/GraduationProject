@@ -85,7 +85,7 @@
             </div>
             <span class="title">Login</span>
 
-            <form action="signInTaker" method="POST">
+            <form action="TakerSI" method="POST">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your email" name = "emailId" required />
                     <i class="uil uil-envelope icon"></i>
@@ -128,7 +128,7 @@
             </div>
             <span class="title">Registration</span>
 
-            <form th:action="@{/addNewTaker}" method="POST" th:object="${taker}" name ="addNewTaker">
+            <form th:action="@{/addTaker}" method="POST" th:object="${taker}" name ="addNewTaker">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your name" required th:field="*{name}" />
                     <i class="uil uil-user"></i>
