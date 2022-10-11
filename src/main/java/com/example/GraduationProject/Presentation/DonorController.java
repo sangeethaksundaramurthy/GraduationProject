@@ -3,30 +3,23 @@ package com.example.GraduationProject.Presentation;
 import com.example.GraduationProject.Business.DonorService;
 import com.example.GraduationProject.Business.Entity.Donor;
 import com.example.GraduationProject.Business.Entity.Food;
-import com.example.GraduationProject.Business.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
 public class DonorController
 {
-
     @Autowired
-    DonorService donorService;
+    DonorService service;
 
-    @Autowired
-    FoodService foodService;
-
-    @GetMapping("donor")
+    @GetMapping("/donor")
     public ModelAndView donor()
     {
         ModelAndView mav = new ModelAndView();
@@ -35,7 +28,7 @@ public class DonorController
         return mav;
     }
 
-    @PostMapping(value= "/addNewDonor")
+    @PostMapping("/addDonor")
     public ModelAndView addNewDonor(@Valid @ModelAttribute Donor donor, BindingResult bindingresult)
     {
         ModelAndView mav = new ModelAndView();
@@ -45,20 +38,21 @@ public class DonorController
         }
         else
         {
-            if(Objects.equals(donorService.save(donor), "Success"))
+            if(Objects.equals(service.save(donor), "Success"))
                 mav.setViewName("donorSignedIn");
             else
             {
+                System.out.println("EmailId already exists:-(");
                 mav.setViewName("redirect:/donor");
             }
         }
         return mav;
     }
-    @PostMapping("/signInDonor")
+    @PostMapping("/DonorSI")
     public ModelAndView signInDonor(@RequestParam String emailId, @RequestParam String password)
     {
         ModelAndView mav = new ModelAndView();
-        Donor donor = donorService.authenticate(emailId,password);
+        Donor donor = service.authenticate(emailId,password);
         if(donor == null)
         {
             mav.setViewName("redirect:/donor");
@@ -71,30 +65,48 @@ public class DonorController
         return  mav;
     }
 
-    @GetMapping(value = "/donateFood", params = "makeADonation")
-    public ModelAndView donateFood_makeADonation()
+    @RequestMapping("/food")
+    public ModelAndView food_donate()
     {
         ModelAndView mav = new ModelAndView();
         mav.addObject("food", new Food());
-        mav.setViewName("donateFood");
+        mav.setViewName("food");
         return mav;
     }
 
-    @PostMapping(value = "/donateFood", params = "submitDonation")
+    @PostMapping(value = "/food", params = "submit")
     public ModelAndView donateFood_recentDonations(@Valid @ModelAttribute Food food, BindingResult bindingresult)
     {
         ModelAndView mav = new ModelAndView();
         if(bindingresult.hasErrors())
         {
-            System.out.println(bindingresult.toString());
-            mav.setViewName("redirect:/donateFood");
+            mav.setViewName("redirect:/food");
         }
         else
         {
-            foodService.save(food);
-            //mav.addObject()
-            mav.setViewName("donorSignedIn");
+            service.save(food);
+            mav.setViewName("delivery");
         }
+        return mav;
+    }
+
+    @GetMapping("/delivery")
+    public ModelAndView delivery(@RequestParam("pickUp") String pickUp)
+    {
+        ModelAndView mav = new ModelAndView();
+        service.setPickUpRequired(pickUp);
+        mav.addObject("donor", service.getDonor());
+        mav.setViewName("donorSignedIn");
+        return mav;
+    }
+
+    @RequestMapping("/history")
+    public ModelAndView history()
+    {
+        ModelAndView mav = new ModelAndView();
+        List<Food> foods = service.donationHistory();
+        mav.addObject("foods",foods);
+        mav.setViewName("donationHistory");
         return mav;
     }
 }

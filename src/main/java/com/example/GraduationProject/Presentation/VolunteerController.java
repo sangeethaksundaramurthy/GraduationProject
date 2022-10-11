@@ -36,7 +36,6 @@ public class VolunteerController
             service.save(volunteer);
             return "home";
         }
-
     }
     @PostMapping("/signInVolunteer")
     public String signInVolunteer(@RequestParam String emailId, @RequestParam String password)

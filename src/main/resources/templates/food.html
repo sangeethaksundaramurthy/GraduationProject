@@ -9,7 +9,7 @@
     <!-- Favicon, CSS & JS -->
     <link rel="icon" href="assets/logo.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="style/donateFood.css">
+    <link rel="stylesheet" href="style/food.css">
     <script src="js/client.js" defer></script>
 
     <link rel="stylesheet" type="text/css"
@@ -23,43 +23,17 @@
 
 <body onload="getBlobstoreURL()">
 
+<form th:action="@{/food}" method="POST" th:object="${food}" class="form-container">
 
-<form th:action="@{/donateFood}" method="POST" th:object="${food}" class="form-container">
-    <div class ="first">
-        <h2 class="center">MAKE FOOD DONATION</h2>
-        <div class="translate" id="google_translate_element"></div>
-
-        <script>
-
-            function googleTranslateElementInit() {
-
-            new google.translate.TranslateElement({
-
-            pageLanguage: 'en',
-
-            autoDisplay: 'true',
-
-            includedLanguages:'sv,en,uk',
-
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-
-            }, 'google_translate_element');
-
-            }
-
-            </script>
-
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    </div>
+    <h2 class="center">MAKE FOOD DONATION</h2>
 
     <!-- Name -->
-    <label><b>Name</b></label>
+    <label><b>Food name</b></label>
     <input placeholder="Name" name="restaurantName" required th:field="*{name}"/>
 
 
     <!-- Location --><br>
-    <label><b>Address</b></label>
+    <label><b>Pick-up address</b></label>
     <input type="text" class="password" placeholder="Address" required th:field="*{address}"/>
     <label th:if="${#fields.hasErrors('address')}">Incorrect value in the input!</label><br/>
 
@@ -85,9 +59,9 @@
     <label th:if="${#fields.hasErrors('bestBefore')}">Incorrect value in the input!</label><br/>
 
 
-    <label><b>Time for pick-up</b></label>
-    <input type="datetime-local" id="appt" name="appt" min="09:00" max="18:00" required th:field="*{pickUpTime}"/>
-    <label th:if="${#fields.hasErrors('pickUpTime')}">Incorrect value in the input!</label><br/>
+    <label><b>Pick-up Date & Time</b></label>
+    <input type="datetime-local" id="appt" name="appt" min="07:00" max="22:00" required th:field="*{pickUpDateAndTime}"/>
+    <label th:if="${#fields.hasErrors('pickUpDateAndTime')}">Incorrect value in the input!</label><br/>
 
 
     <!-- Supply -->
@@ -96,8 +70,8 @@
 
     <!-- Special Instructions --><br>
     <label><b>Special Instructions</b></label>
-    <input placeholder="Enter any special instructions" name="specialInstructions">
-    <label th:if="${#fields.hasErrors('quantity')}">Incorrect value in the input!</label><br/>
+    <input placeholder="Enter any special instructions" name="allergyInformation">
+    <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
 
     <!-- Images --><br>
     <label><b>Upload an image:</b></label>
@@ -106,7 +80,7 @@
 
 
     <!-- Submit & Cancel -->
-    <button type="submit" class="btn" name ="submitDonation">Submit Donation</button>
+    <button type="submit" class="btn" name ="submit">Submit Donation</button>
     <button type="submit" class="btn cancel" onclick="">Cancel</button>
 </form>
 

@@ -84,7 +84,7 @@
             </div>
             <span class="title">Login</span>
 
-            <form action="signInDonor" method="POST">
+            <form action="DonorSI" method="POST">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your email" name = "emailId" required />
                     <i class="uil uil-envelope icon"></i>
@@ -126,7 +126,7 @@
             </div>
             <span class="title">Registration</span>
 
-            <form th:action="@{/addNewDonor}" method="POST" th:object="${donor}" id = "1">
+            <form th:action="@{/addDonor}" method="POST" th:object="${donor}" id = "1">
                 <div class="input-field">
                     <input type="text" placeholder="Enter your name" required
                            th:field="*{name}"/>

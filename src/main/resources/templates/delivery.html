@@ -83,33 +83,31 @@
     </div>
 
     <div class="button_section">
+
         <button class="selfBtn" onClick="openPopupSelf()">Self Delivery</button>
         <div class="popup" id="popupself">
             <img src="images/tick.png">
             <h2>Thank You!</h2>
             <p>Your donation means alot!!</p>
-            <button type="button" onclick="closePopupSelf()">OK</button>
+            <form action="/delivery" METHOD="GET">
+            <button type="submit" name = "pickUp" value ="False">OK</button>
+            </form>
         </div>
         <!-- <button onClick={toggleModal} class="pickupBtn"> -->
         <button class="pickupBtn" onclick="openPopupPick()">
             Pick-Up
         </button>
         <div class="popup" id="popuppick">
+
             <img src="images/tick.png">
             <h2>Thank You!</h2>
             <p>Pickup Request service sent succesfully !!</p>
-            <button type="button" onclick="closePopupPick()">OK</button>
+            <form action="/delivery" METHOD="GET">
+            <button type="submit" name = "pickUp" value="True">OK</button>
+            </form>
         </div>
+
     </div>
-    <!-- {isModalOpen ? (
-      <div class="modal_overlay">
-        <div class="modal_container">
-          <IoIosCheckmarkCircle class="icon" />
-          <p>Pickup Request service sent succesfully !!</p>
-          <p>You will notified soon</p>
-          <Button text="Okay" link="/" />
-        </div>
-      </div> -->
 </div>
 
 <script>

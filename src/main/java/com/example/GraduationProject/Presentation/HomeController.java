@@ -38,4 +38,9 @@ public class HomeController
             return "home";
         }
     }
+    @GetMapping(value ="/donor", params = "logout")
+    public String donor_logout()
+    {
+        return "home";
+    }
 }
