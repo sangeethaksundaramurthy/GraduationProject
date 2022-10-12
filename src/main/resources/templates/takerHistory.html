@@ -72,7 +72,7 @@
     </ul>
 </div>
 <div class="imp">
-    <h2>Pick-up History</h2>
+    <h2>Accepted Donation History</h2>
     <ul class="history" th:each="food : ${foods}">
         <li class="description">
             Food Name:
@@ -102,18 +102,20 @@
     </ul>
 
     <div>
-        <!--        <form action="/donorSIH" method="get">-->
-        <button class="signup_btn" type="submit" name="logout">
-            Ok
-        </button>
-        <!--        </form>-->
+<!--        <form action="/donorSIH" method="get">-->
+            <button class="signup_btn" type="submit" name="logout">
+                Ok
+            </button>
+<!--        </form>-->
     </div>
 
 </div>
 </body>
 </html>
 
-<!--<table>
+
+<!--
+<table>
     <tr>
         <th>Food Name</th>
         <th>Pick-up address</th>
@@ -134,10 +136,8 @@
         <td th:text="${food.allergyInformation}"></td>
         <td th:text="${food.status}"></td>
 
-            <a th:if="${food.status != DELIVERED}" th:href="'/delivered/' + ${food.id}" > Delivered?
-            </a>
-
     </tr>
-</table>-->
+</table>
 
-
+</body>
+</html>-->

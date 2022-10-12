@@ -1,14 +1,124 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be aHand - Donation Availability</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Be aHand</title>
+
+    <!-- Favicon, CSS & JS -->
+
+    <link rel="stylesheet" href="style/viewDonations.css" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
+    <script src="js/client.js" defer></script>
+    <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <!-- Font Awesome icons CDN -->
+    <script src="https://use.fontawesome.com/4e51920be5.js"></script>
 </head>
 
 <body >
-    <table>
+<!-- Navbar -->
+<div id="navbar" class="navbar">
+    <ul>
+        <li>
+
+
+            <div class="translate" id="google_translate_element"></div>
+
+            <script>
+
+             function googleTranslateElementInit() {
+
+             new google.translate.TranslateElement({
+
+             pageLanguage: 'en',
+
+             autoDisplay: 'true',
+
+             includedLanguages:'sv,en,uk',
+
+             layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+
+             }, 'google_translate_element');
+
+             }
+
+             </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+        </li>
+        <li>
+            <a class="link" href="/" id="BeaHand-button">Home</a>
+        </li>
+        <li>
+            <a class="link" href="/donor" id="TakeaHand-button">Be aHand</a>
+        </li>
+        <li>
+            <a class="link" href="/volunteer" id="volunteer-button">Volunteer</a>
+        </li>
+        <img src="images/BeaHand.png" class="navbar-logo" />
+        <div class="name">Be aHand</div>
+    </ul>
+</div>
+<div class="imp">
+    <h2> New Donations </h2>
+    <div class="history">
+    <ul class="list" th:each="food : ${foods}">
+        <li class="description">
+            Food Name:
+            <label th:text="${food.name}"> </label>
+        </li>
+        <li class="description"> Pick-up address:
+            <label th:text="${food.address}"></label>
+        </li>
+        <li class="description"> Food Category:
+            <label th:text="${food.category}"></label>
+        </li>
+        <li class="description"> Pick-up Date & Time:
+            <label th:text="${food.pickUpDateAndTime}"> </label>
+        </li>
+        <li class="description"> Best before date:
+            <label th:text="${food.bestBefore}"></label>
+        </li>
+        <li class="description"> Quantity:
+            <label th:text="${food.quantity}"></label>
+        </li>
+        <li class="description"> Special Instructions:
+            <label th:text="${food.allergyInformation}"></label>
+        </li>
+        <li class="description"> Status:
+            <label th:text="${food.status}"></label>
+        </li>
+        <form th:action="'/accept/' + ${food.id}" method="get">
+        <button class="signup_btn" type="submit"   >
+            Accept
+        </button>
+        </form>
+    </ul>
+
+
+
+    </div>
+
+
+</div>
+</body>
+</html>
+
+
+<!--
+<table>
     <tr>
         <th>Food Name</th>
         <th>Pick-up address</th>
@@ -34,3 +144,4 @@
 
 </body>
 </html>
+-->

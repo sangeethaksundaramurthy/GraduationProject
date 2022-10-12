@@ -141,6 +141,16 @@ h2 {
   font-size: 30px;
   margin-bottom: auto;
 }
+.notify{
+ margin-left: 40px;
+  font-family: ubuntu;
+  font-color: #955601;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
 
 .row {
   display: flex;

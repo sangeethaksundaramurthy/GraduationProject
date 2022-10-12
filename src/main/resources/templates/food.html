@@ -25,33 +25,9 @@
 
 <form th:action="@{/food}" method="POST" th:object="${food}" class="form-container">
 
-    <div class ="first">
+
         <h2 class="center">MAKE FOOD DONATION</h2>
-        <div class="translate" id="google_translate_element"></div>
-
-        <script>
-
-            function googleTranslateElementInit() {
-
-            new google.translate.TranslateElement({
-
-            pageLanguage: 'en',
-
-            autoDisplay: 'true',
-
-            includedLanguages:'sv,en,uk',
-
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-
-            }, 'google_translate_element');
-
-            }
-
-            </script>
-
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    </div>
+        
 
     <!-- Name -->
     <label><b>Food name</b></label>
