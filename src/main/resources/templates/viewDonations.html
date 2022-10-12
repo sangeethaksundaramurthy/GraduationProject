@@ -100,11 +100,22 @@
         <li class="description"> Status:
             <label th:text="${food.status}"></label>
         </li>
-        <form th:action="'/accept/' + ${food.id}" method="get">
-        <button class="signup_btn" type="submit"   >
+<!--        <form th:action="'/accept/' + ${food.id}" method="get">-->
+        <button class="accept_btn" type="submit"  onClick="openPopupAccept()">
             Accept
         </button>
-        </form>
+            <div class="popup" id="popupAccept">
+
+                <img src="images/tick.png">
+                <h2>Thank You!</h2>
+                <p>For accepting the donation.</p>
+                <form action="/delivery" METHOD="GET">
+                    <button type="submit" name = "pickUp" value="True">OK</button>
+                </form>
+            </div>
+<!--        </form>-->
+
+
     </ul>
 
 
@@ -113,6 +124,20 @@
 
 
 </div>
+
+<script>
+    let popupAccept = document.getElementById("popupAccept");
+
+    function openPopupAccept(){
+    popupAccept.classList.add("open-popup");
+    }
+
+    function closePopupAccept(){
+         popupAccept.classList.remove("open-popup");
+        }
+
+
+</script>
 </body>
 </html>
 
