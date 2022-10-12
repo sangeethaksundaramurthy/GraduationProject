@@ -90,4 +90,12 @@ public class TakerController
         mav.setViewName("takerHistory");
         return mav;
     }
+
+    @GetMapping("/goToTaker")
+    public ModelAndView goToTaker(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("taker", service.getTaker());
+        mav.setViewName("takerSignedIn");
+        return mav;
+    }
 }
