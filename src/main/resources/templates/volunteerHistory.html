@@ -65,7 +65,7 @@
             <a class="link" href="/taker" id="TakeaHand-button">Take aHand</a>
         </li>
         <li>
-            <a class="link" href="/volunteer" id="volunteer-button">Volunteer</a>
+            <a class="link" href="/donor" id="volunteer-button">Be aHand</a>
         </li>
         <img src="images/BeaHand.png" class="navbar-logo" />
         <div class="name">Be aHand</div>
@@ -74,72 +74,49 @@
 <div class="imp">
     <h2>Pick-up History</h2>
     <ul class="history" th:each="food : ${foods}">
-        <li class="description">
-            Food Name:
-            <label th:text="${food.name}"> </label>
+        <li class="description"> Donor name:
+            <label th:text="${food.donor.name}"></label>
+        </li>
+        <li class="description"> Donor Phone number:
+            <label th:text="${food.donor.phone}"></label>
         </li>
         <li class="description"> Pick-up address:
             <label th:text="${food.address}"></label>
         </li>
-        <li class="description"> Food Category:
-            <label th:text="${food.category}"></label>
-        </li>
         <li class="description"> Pick-up Date & Time:
             <label th:text="${food.pickUpDateAndTime}"> </label>
         </li>
-        <li class="description"> Best before date:
-            <label th:text="${food.bestBefore}"></label>
+
+
+        <li class="description"> Food Name:
+            <label th:text="${food.name}"> </label>
         </li>
         <li class="description"> Quantity:
             <label th:text="${food.quantity}"></label>
         </li>
-        <li class="description"> Special Instructions:
-            <label th:text="${food.allergyInformation}"></label>
-        </li>
-        <li class="description"> Status:
-            <label th:text="${food.status}"></label>
-        </li>
-        <span>If delivered please click here</span>
-        <a th:if="${food.status != DELIVERED}" th:href="'/delivered/' + ${food.id}" > Delivered  </a>
 
+        <li class="description"> Taker name:
+            <label th:text="${food.taker.name}"></label>
+        </li>
 
+        <li class="description"> Taker Phone number:
+            <label th:text="${food.taker.phone}"></label>
+        </li>
+
+        <li class="description"> Drop-In address:
+            <label th:text="${food.taker.address}"></label>
+        </li>
     </ul>
 
     <div>
-        <!--        <form action="/donorSIH" method="get">-->
+        <form action="/goToVolunteer" METHOD="GET">
         <button class="signup_btn" type="submit" name="logout">
             Ok
         </button>
-        <!--        </form>-->
+               </form>
     </div>
 
 </div>
 </body>
 </html>
-
-<!--<table>
-    <tr>
-        <th>Food Name</th>
-        <th>Pick-up address</th>
-        <th>Food Category</th>
-        <th>Pick-up Date & Time</th>
-        <th>Best before date</th>
-        <th>Quantity</th>
-        <th>Special Instructions</th>
-        <th>Status</th>
-    </tr>
-    <tr th:each="food : ${foods}">
-        <td th:text="${food.name}"></td>
-        <td th:text="${food.address}"></td>
-        <td th:text="${food.category}"></td>
-        <td th:text="${food.pickUpDateAndTime}"></td>
-        <td th:text="${food.bestBefore}"></td>
-        <td th:text="${food.quantity}"></td>
-        <td th:text="${food.allergyInformation}"></td>
-        <td th:text="${food.status}"></td>
-
-
-    </tr>
-</table>-->
-
 

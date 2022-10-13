@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -78,9 +78,17 @@
 
 
 <aside>
-
-    <p class="notify">Donation available. Please register or login as Take aHand and accept!!</p>
-    <h2>About <span class="logo">Be aHand</span></h2>
+<br>
+    <form th:action="@{/}" method="GET">
+    <p style="color:#e65100" class="notify"><em><u>
+        <span th:if="${food!= 'empty'}">
+            <a href="/taker">
+            Donation available. Please register or login as Take aHand to accept!!
+            </a>
+        </span>
+    </u></em></p>
+    </form>
+    <h2> <span class="logo">Be aHand</span> Vision and Mission </h2>
     <div class="row">
         <div class="column">
             <p class="description">
@@ -121,8 +129,20 @@
 </aside>
 
 <!-- Footer -->
-<footer class="center bg-dark">
-    <p><span class="logo">Be aHand</span> &copy; 2022</p>
+<footer class="social-footer">
+    <div class="social-footer-left">
+        <a href="#"><img class="logo" src="https://placehold.it/150x30"></a>
+    </div>
+    <div class="social-footer-icons">
+        <ul class="menu simple">
+            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
 </footer>
+
+
 </body>
 </html>
