@@ -86,6 +86,8 @@
     font-family: ubuntu;
   }
 
+
+
   .translate{
     padding: 20px 30px;
      margin-top: 10px;
@@ -132,21 +134,26 @@
   }
 
   .signup_btn {
-    height: 48px;
-    width: 368px;
-    border-radius: 10px;
-    padding: 8px 130px;
-    background: #ffb606;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    text-align: center;
-    letter-spacing: 0.0015em;
-    color: white;
-    font-size: 16px;
-    margin-top: 28px;
-     cursor: pointer;
+     height: 48px;
+      width: 368px;
+      border-radius: 10px;
+      padding: 8px 130px;
+      background: #ffb606;
+      border-radius: 10px;
+      border: none;
+      letter-spacing: 0.0015em;
+      margin-top: 28px;
+      cursor: pointer;
   }
+
+ a{
+    color: white;
+    text-align: 250px;
+    padding: 35px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: ubuntu;
+    }
 
   .donor {
     display: flex;

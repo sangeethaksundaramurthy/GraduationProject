@@ -187,29 +187,65 @@ h2 {
 .number {
   margin-left: 10px;
 }
-.social-footer {
-  padding: 1rem;
-  background: $dark-gray;
+
+
+.design {
+  margin-top: 60px;
+  padding: 50px 0;
+  background-color: #333;
+  color: #efefef;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  }
-
-  .social-footer-icons {
-    li:last-of-type {
-      margin-right: 0;
-    }
-
-    .fa {
-      font-size: 1.3rem;
-      color: $white;
 }
-      &:hover {
-        color: darken($dark-gray, 25%);
-        transition: color 0.3s ease-in;
-      }
 
+.design div{
+  text-align: center;
+}
 
+.col-2{
+  flex-grow: 2;
+}
+
+.design div h3{
+  font-weight: 300;
+  margin-bottom: 30px;
+  font-family: ubuntu;
+  letter-spacing: 1px;
+}
+
+form input{
+  width: 400px;
+  height: 45px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  outline: none;
+  border: none;
+}
+
+form button{
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.social-icons{
+  margin-top: 30px;
+}
+
+.social-icons i{
+  font-size: 22px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.social-icons a{
+  color: #fff;
+}
 
 
 
