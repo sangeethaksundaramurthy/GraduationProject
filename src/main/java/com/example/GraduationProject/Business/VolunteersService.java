@@ -59,7 +59,7 @@ public class VolunteersService
     }
     public List<Food> acceptedFoodList()
     {
-        return foodRepository.findAllByStatusAndPickUpRequired(FoodStatus.ACCEPTED, true);
+        return foodRepository.foodToBePickedUp();
     }
 
     public void acceptPickup(Integer id)
