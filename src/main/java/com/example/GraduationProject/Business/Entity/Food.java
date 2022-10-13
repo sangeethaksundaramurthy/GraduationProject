@@ -200,8 +200,18 @@ public class Food
         this.volunteer = volunteer;
     }
 
-    @Override public String toString()
-    {
-        return "Food{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", category='" + category + '\'' + ", createdDate=" + createdDate + ", bestBefore=" + bestBefore + ", pickUpDateAndTime=" + pickUpDateAndTime + ", quantity='" + quantity + '\'' + ", status=" + status + ", allergyInformation='" + allergyInformation + '\'' + ", pickUpRequired=" + pickUpRequired + ", image='" + image + '\'' + ", donor=" + donor + ", taker=" + taker + ", volunteer=" + volunteer + '}';
+    @Override
+    public String toString() {
+        return "Food{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", category='" + category + '\'' +
+                ", createdDate=" + createdDate +
+                ", bestBefore=" + bestBefore +
+                ", pickUpDateAndTime=" + pickUpDateAndTime +
+                ", quantity='" + quantity + '\'' +
+                ", status=" + status +
+                ", allergyInformation='" + allergyInformation + '\'' +
+                '}';
     }
 }

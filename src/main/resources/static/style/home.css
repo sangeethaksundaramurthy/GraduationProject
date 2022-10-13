@@ -130,8 +130,7 @@ p {
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 10px;
-
-  font-family: ubuntu;
+   font-family: ubuntu;
 }
 
 h2 {
@@ -188,21 +187,40 @@ h2 {
 .number {
   margin-left: 10px;
 }
-
-footer {
+.social-footer {
   padding: 1rem;
-}
+  background: $dark-gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
 
-footer p {
-  margin: 0;
-}
+  .social-footer-icons {
+    li:last-of-type {
+      margin-right: 0;
+    }
 
-.bg-dark {
+    .fa {
+      font-size: 1.3rem;
+      color: $white;
+}
+      &:hover {
+        color: darken($dark-gray, 25%);
+        transition: color 0.3s ease-in;
+      }
+
+
+
+
+
+/*.bg-dark {
   background: #333;
   color: #f4f4f4;
-}
+}*/
 
+/*
 .center {
   text-align: center;
   margin: auto;
 }
+*/

@@ -75,10 +75,8 @@
     <input placeholder="Enter any special instructions" name="allergyInformation">
     <label th:if="${#fields.hasErrors('allergyInformation')}">Incorrect value in the input!</label><br/>
 
-    <!-- Images --><br>
-    <label><b>Upload an image:</b></label>
-    <input type="file" name="image" th:field="*{image}">
-    <label th:if="${#fields.hasErrors('image')}">Incorrect value in the input!</label><br/>
+
+
 
 
     <!-- Submit & Cancel -->

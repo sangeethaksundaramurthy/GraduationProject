@@ -109,8 +109,14 @@ public class Donor
         this.foods = foods;
     }
 
-    @Override public String toString()
-    {
-        return "Donor{" + "name='" + name + '\'' + ", address='" + address + '\'' + ", postalCode=" + postalCode + ", phone='" + phone + '\'' + ", emailId='" + emailId + '\'' + ", password='" + password + '\'' + ", foods=" + foods + '}';
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode=" + postalCode +
+                ", phone='" + phone + '\'' +
+                ", emailId='" + emailId + '\'' +
+                '}';
     }
 }

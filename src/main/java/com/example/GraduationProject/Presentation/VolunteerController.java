@@ -100,9 +100,16 @@ public class VolunteerController
     {
         ModelAndView mav = new ModelAndView();
         service.delivered(id);
-        mav.setViewName("redirect:/pickup");
+        mav.setViewName("viewPickup");
         return mav;
     }
 
+    @GetMapping("/goToVolunteer")
+    public ModelAndView goToVolunteer(){
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("volunteer", service.getVolunteer());
+        mav.setViewName("volunteerSignedIn");
+        return mav;
+    }
 
 }

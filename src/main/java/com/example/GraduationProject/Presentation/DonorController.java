@@ -117,5 +117,21 @@ public class DonorController
         return mav;
     }
 
+    @GetMapping("/")
+    public ModelAndView home(){
+        ModelAndView mav = new ModelAndView();
+        System.out.println("HI");
+        Food food = service.availFood();
+        mav.addObject("food", food );
+        System.out.println(food.toString());
+        mav.setViewName("home");
+        System.out.println("3");
+        return mav;
+    }
+
+    @GetMapping("/logoutD")
+    public String logoutD(){
+        return "redirect:/";
+    }
 
 }

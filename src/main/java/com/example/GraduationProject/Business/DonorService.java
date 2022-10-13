@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -72,5 +73,14 @@ public class DonorService
     public List<Food> donationHistory()
     {
         return foodRepository.findAllByDonorId(donor.getId());
+    }
+
+    public Food availFood() {
+        List<Food> foods = foodRepository.findAllByStatus(FoodStatus.AVAILABLE);
+        if (foods.isEmpty()) {
+            return new Food();
+        } else {
+            return foods.get(0);
+        }
     }
 }
