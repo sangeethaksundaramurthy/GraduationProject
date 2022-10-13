@@ -124,7 +124,7 @@ body {
   background-color: #FAFAFC;
 }
 
-p {
+.vision{
   font-size: 22px;
   line-height: 1.5;
   margin-left: 40px;
@@ -133,13 +133,32 @@ p {
    font-family: ubuntu;
 }
 
-h2 {
+.mission{
+  font-size: 22px;
+  line-height: 1.5;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 0;
+   font-family: ubuntu;
+}
+
+.first {
   margin-left: 40px;
   font-family: ubuntu;
   margin-top: 50px;
   font-size: 30px;
   margin-bottom: auto;
 }
+
+.second{
+margin-left: 675px;
+  font-family: ubuntu;
+  margin-top: 50px;
+  font-size: 30px;
+  margin-bottom: auto;
+}
+
+
 .notify{
  margin-left: 40px;
   font-family: ubuntu;
@@ -191,7 +210,7 @@ h2 {
 
 .design {
   margin-top: 60px;
-  padding: 50px 0;
+  padding: 50px 40px;
   background-color: #333;
   color: #efefef;
   display: flex;

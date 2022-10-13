@@ -91,6 +91,7 @@ public class VolunteerController
         ModelAndView mav = new ModelAndView();
         List<Food> foods = service.volunteerHistory();
         mav.addObject("foods",foods);
+        System.out.println(foods.toString());
         mav.setViewName("volunteerHistory");
         return mav;
     }

@@ -95,6 +95,7 @@
             <label th:text="${food.quantity}"></label>
         </li>
 
+        <span th:if="${food?.taker}">
         <li class="description"> Taker name:
             <label th:text="${food.taker.name}"></label>
         </li>
@@ -106,6 +107,7 @@
         <li class="description"> Drop-In address:
             <label th:text="${food.taker.address}"></label>
         </li>
+        </span>
     </ul>
 
     <div>
